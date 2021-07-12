@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 14:44:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/11 21:56:29 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/12 13:06:00 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,53 +60,44 @@ int main()
 	j  = 20;
 	while (i < 275)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		i++;
 	}
 	while (j < 275)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		j++;
 	}
 	while (i >= 20 )
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		i--;
 	}
 	while (j >= 20)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		j--;
 	}
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
 	i = 100;
 	j  = 100;
 	while (i < 375)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		i++;
 	}
 	while (j < 375)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		j++;
 	}
 	while (i >= 100)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff00ff);
 		i--;
 	}
 	while (j >= 100)
 	{
-		pixel_put(&img, i, j, 0x00ff0000);
-	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
+		pixel_put(&img, i, j, 0x00ff000ff);
 		j--;
 	}
 	mlx_put_image_to_window(mlx_init_ptr, mlx_win, img.img, 0, 0);
