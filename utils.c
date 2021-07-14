@@ -6,13 +6,13 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/14 17:22:09 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/14 21:46:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int init_img_datas(t_mlx_datas *vars)
+static int init_img_datas_struct(t_mlx_datas *vars)
 {
 	vars->free_space.img = mlx_xpm_file_to_image(vars->mlx, \
 	"img/freespace.xpm", &vars->free_space.width, &vars->free_space.height);
@@ -47,7 +47,7 @@ int init_img_datas(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_mlx_datas(t_mlx_datas *vars)
+int init_mlx_datas_struct(t_mlx_datas *vars)
 {
 	vars->mlx = mlx_init();
 	if (error_msg(vars->mlx, "mlx_init has failed.\n"))
@@ -55,11 +55,11 @@ int init_mlx_datas(t_mlx_datas *vars)
 	vars->last_x_pos = 0;
 	vars->last_y_pos = 0;
 	vars->moves = 0;
-	if (init_img_datas(vars) == -1)
+	if (init_img_datas_struct(vars) == -1)
 		return (-1);
 	vars->win_size_x = vars->free_space.width * 13;// change the multiplicater in accordance 
 	vars->win_size_y = vars->free_space.height * 8;// with the map given as parameter
-	vars->win = mlx_new_window(vars->mlx, vars->win_size_x, vars->win_size_y, "pepe");
+	vars->win = mlx_new_window(vars->mlx, vars->win_size_x, vars->win_size_y, "so_long");
 	if (error_msg(vars->win, "Opening a new window has failed.\n"))
 		return (0);
 	vars->free_space.tmp = 0;
@@ -68,6 +68,15 @@ int init_mlx_datas(t_mlx_datas *vars)
 	vars->player.tmp = 0;
 	vars->exit.tmp = 0;
 	return (0);
+}
+
+void init_map_datas_struct(t_map_datas *map)
+{
+	map->width = 0;
+	map->height = 0;
+	map->collectible = 0;
+	map->player = 0;
+	map->exit = 0;
 }
 
 void init_map(t_mlx_datas *vars)
@@ -88,6 +97,57 @@ void init_map(t_mlx_datas *vars)
 		x = x + vars->free_space.width;
 	}
 	vars->tmp_free_space = 1;
+}
+
+static int check_extension(char *file)
+{
+	int i;
+	int check;
+
+	i = 0;
+	while(file[i + 1] != '\0')
+		i++;
+	check = 0;
+	while (i != 0 && check != 4)
+	{
+		if (check == 0 && file[i] == 'r')
+			i--;
+		else if (check == 1 && file [i] == 'e')
+			i--;
+		else if (check == 2 && file[i] == 'b')
+			i--;
+		else if (check == 3 && file[i] == '.')
+			i--;
+		else
+			return (-1);
+		check++;
+	}
+	if (check != 4)
+		return (-1);
+	return (0);
+}
+
+int check_params(int ac, char **av)
+{
+	if (ac < 2)
+	{
+		printf("Please give a map with a .ber extension.\n");
+		return (-1);
+	}
+	else if (ac > 2)
+	{
+		printf("Please give only one argument.\n");
+		return (-1);
+	}
+	else
+	{
+		if (check_extension(av[1]) == -1)
+		{
+			printf("Please give a file with the right extension (.ber).\n");
+			return (-1);
+		}
+	}
+	return (0);
 }
 
 int error_msg(void *ptr, char *msg)

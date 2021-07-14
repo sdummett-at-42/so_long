@@ -1,4 +1,4 @@
 # fdf
-This project is about creating a simplified 3D graphic representation of arelief landscape.
+This project is a very small 2D game. It is built to make you work with textures, sprites. And some very basic gameplay elements.
 
 To clone this repo, use: git clone --recurse-submodules git@github.com:stony-d/fdf.git
