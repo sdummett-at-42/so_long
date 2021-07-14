@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/14 13:04:16 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/14 17:45:58 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,83 +14,91 @@
 
 int key_hook(int keycode, t_mlx_datas *vars)
 {
-	printf("keycode is %c\n", keycode);
+	vars->last_x_pos = vars->player.x;
+	vars->last_y_pos = vars->player.y;
 	if (keycode == 'd')
 	{
-		vars->x += 10;
-		if (vars->x < 0)
-			vars->x = 0;
-		else if (vars->x > vars->win_size_x - 5)
-			vars->x = vars->win_size_x - 5;
+		vars->player.x += vars->player.width; // change 70 value with the height or width of the image
+		if (vars->player.x < 0)
+			vars->player.x = 0;
+		else if (vars->player.x > vars->win_size_x - vars->player.width)
+			vars->player.x = vars->win_size_x - vars->player.width;
 	}
 	if (keycode == 'a')
 	{
-		vars->x -= 10;
-		if (vars->x < 0)
-			vars->x = 0;
-		else if (vars->x > vars->win_size_x - 5)
-			vars->y = vars->win_size_x - 5;
+		vars->player.x -= vars->player.width;
+		if (vars->player.x < 0)
+			vars->player.x = 0;
+		else if (vars->player.x > vars->win_size_x - vars->player.width)
+			vars->player.x = vars->win_size_x - vars->player.width;
 	}
 	if (keycode == 's')
 	{
-		vars->y += 10;
-		if (vars->y < 0)
-			vars->y = 0;
-		else if (vars->y > vars->win_size_y - 5)
-			vars->y = vars->win_size_y - 5;
+		vars->player.y += vars->player.height;
+		if (vars->player.y < 0)
+			vars->player.y = 0;
+		else if (vars->player.y > vars->win_size_y - vars->player.height)
+			vars->player.y = vars->win_size_y - vars->player.height;
 	}
 	if (keycode == 'w')
 	{
-		vars->y -= 10;
-		if (vars->y < 0)
-			vars->y = 0;
-		else if (vars->y > vars->win_size_y - 5)
-			vars->y = vars->win_size_y - 5;
+		vars->player.y -= vars->player.height;
+		if (vars->player.y < 0)
+			vars->player.y = 0;
+		else if (vars->player.y > vars->win_size_y - vars->player.height)
+			vars->player.y = vars->win_size_y - vars->player.height;
 	}
+	vars->moves++;
+	printf("%d\n", vars->moves);
 	return (0);
+}
+
+void put_free_space(t_mlx_datas *vars)
+{
+	if (vars->moves != 0)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->free_space.img, vars->last_x_pos, vars->last_y_pos);
+	}
+}
+
+void put_collectible(t_mlx_datas *vars)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->collectible.img, 280, 210);
+}
+
+void put_player(t_mlx_datas *vars)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, vars->player.x, vars->player.y);
 }
 
 int render_next_frame(t_mlx_datas *vars)
 {
-
-	vars->x = 0;
-	while (vars->x < vars->win_size_x)
-	{
-		vars->y = 0;
-		while (vars->y < vars->win_size_y)
-		{
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img, vars->x, vars->y);
-			vars->y = vars->y + vars->height;
-		}
-		//printf("x : %d, y : %d, img_x : %d, win_y : %d, \n",vars->x, vars->y, \
-		//vars->win_size_x, vars->win_size_y);
-		vars->x = vars->x + vars->width;
-	}
+	put_player(vars);
+	put_free_space(vars);
+	put_collectible(vars);
 	return (0);
 }
 
 int main()
 {
 	t_mlx_datas vars;
-	// t_img_datas img;
 
-	vars.x = 0;
-	vars.y = 0;
-	vars.mlx = mlx_init();
-	if (error_msg(vars.mlx, "mlx_init has failed.\n"))
-		return (0);
-	vars.img = mlx_xpm_file_to_image(vars.mlx, "img/freespace.xpm", &vars.width, &vars.height);
-	if (error_msg(vars.img, "Image reading has failed.\n"))
-		return (0);
-	vars.win_size_x = vars.width * 13; // change the multiplicater in 
-	//accordance with the map given as parameter
-	vars.win_size_y = vars.height * 8;
-	vars.win = mlx_new_window(vars.mlx, vars.win_size_x, vars.win_size_y, "pepe");
-	if (error_msg(vars.win, "Open a new window has failed.\n"))
-		return (0);
-	printf("Image -> width : %d, height : %d\n", vars.width, vars.height);
+	if (init_mlx_datas(&vars) == -1)
+		return (-1);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars);
+	vars.free_space.x = 0;
+	vars.free_space.y = 0;
+	vars.wall.x = 0;
+	vars.wall.y = 0;
+	vars.collectible.x = 0;
+	vars.collectible.y = 0;
+	vars.player.x = 0;
+	vars.player.y = 0;
+	vars.exit.x = 0;
+	vars.exit.y = 0;
+	init_map(&vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
