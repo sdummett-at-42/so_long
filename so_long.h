@@ -57,6 +57,8 @@ int init_mlx_datas_struct(t_mlx_datas *vars);
 void init_map(t_mlx_datas *vars);
 void init_map_datas_struct(t_map_datas *map);
 int check_params(int ac, char **av);
+char **map_parser(t_map_datas *map_datas, char *file);
+void ft_putstr(char *str);
 
 /*
 ** DEBUGGING FUNCS

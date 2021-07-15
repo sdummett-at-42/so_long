@@ -24,6 +24,9 @@ SRC		= so_long.c \
 			utils.c \
 			gnl/get_next_line.c \
 			gnl/get_next_line_utils.c \
+			map_parser.c \
+			init_funcs.c \
+			ft_putstr.c \
 			debugging_funcs.c
 OBJ		= $(SRC:.c=.o)
 
