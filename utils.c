@@ -105,8 +105,11 @@ static int check_extension(char *file)
 	int check;
 
 	i = 0;
-	while(file[i + 1] != '\0')
+	while(file[i] != '\0')
 		i++;
+	if (i == 0)
+		return (-1);
+	i--;
 	check = 0;
 	while (i != 0 && check != 4)
 	{

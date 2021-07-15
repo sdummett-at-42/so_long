@@ -23,7 +23,8 @@ NAME	= so_long
 SRC		= so_long.c \
 			utils.c \
 			gnl/get_next_line.c \
-			gnl/get_next_line_utils.c
+			gnl/get_next_line_utils.c \
+			debugging_funcs.c
 OBJ		= $(SRC:.c=.o)
 
 # ************************************ #
@@ -35,6 +36,7 @@ OBJ		= $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	make -C minilibx-linux
 	$(CC) $(OBJ) -o $(NAME)  -lXext -lX11 -lm  minilibx-linux/libmlx_Linux.a
 #$(CC) -o $(NAME) $(OBJ)
 
@@ -48,5 +50,6 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	make clean -C minilibx-linux
 
 re: fclean all
