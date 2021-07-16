@@ -26,75 +26,98 @@ void init_tmp(t_mlx_datas *vars)
 	vars->exit.y = 0;
 }
 
-int key_hook(int keycode, t_mlx_datas *vars)
+int player_can_move(t_mlx_datas *vars, int x, int y)
 {
-	vars->last_x_pos = vars->player.x;
-	vars->last_y_pos = vars->player.y;
+	if (vars->map[y][x] == '1') // || vars->map[y][x] == 'E') <- ???
+		return (0);
+	return (1);
+}
+
+void move_up(t_mlx_datas *vars)
+{
+	vars->play_pos.y--;
+}
+
+void move_down(t_mlx_datas *vars)
+{
+	vars->play_pos.y++;
+}
+
+void move_left(t_mlx_datas *vars)
+{
+	vars->play_pos.x--;
+}
+
+void move_right(t_mlx_datas *vars)
+{
+	vars->play_pos.x++;
+}
+
+int key_hook_2(int keycode, t_mlx_datas *vars)
+{
+
 	if (keycode == 'd')
 	{
-		vars->player.x += vars->player.width;
-		if (vars->player.x < 0)
-			vars->player.x = 0;
-		else if (vars->player.x > vars->win_size_x - vars->player.width)
-			vars->player.x = vars->win_size_x - vars->player.width;
+		if (player_can_move(vars, vars->play_pos.x + 1, vars->play_pos.y))
+		{
+			move_right(vars);
+			vars->moves++;
+		}
+		
 	}
 	if (keycode == 'a')
 	{
-		vars->player.x -= vars->player.width;
-		if (vars->player.x < 0)
-			vars->player.x = 0;
-		else if (vars->player.x > vars->win_size_x - vars->player.width)
-			vars->player.x = vars->win_size_x - vars->player.width;
+		if (player_can_move(vars, vars->play_pos.x - 1, vars->play_pos.y))
+		{
+			move_left(vars);
+			vars->moves++;
+		}
+
 	}
 	if (keycode == 's')
 	{
-		vars->player.y += vars->player.height;
-		if (vars->player.y < 0)
-			vars->player.y = 0;
-		else if (vars->player.y > vars->win_size_y - vars->player.height)
-			vars->player.y = vars->win_size_y - vars->player.height;
+		if (player_can_move(vars, vars->play_pos.x, vars->play_pos.y + 1))
+		{
+			move_down(vars);
+			vars->moves++;
+		}
 	}
 	if (keycode == 'w')
 	{
-		vars->player.y -= vars->player.height;
-		if (vars->player.y < 0)
-			vars->player.y = 0;
-		else if (vars->player.y > vars->win_size_y - vars->player.height)
-			vars->player.y = vars->win_size_y - vars->player.height;
+		if (player_can_move(vars, vars->play_pos.x, vars->play_pos.y - 1))
+		{
+			move_up(vars);
+			vars->moves++;
+		}
 	}
-	vars->moves++;
+
 	printf("%d\n", vars->moves); // /!\ PRINTF !
 	return (0);
 }
 
 void put_free_space(t_mlx_datas *vars)
 {
-	if (vars->moves != 0)
+	if (vars->play_pos.last_x != vars->play_pos.x || vars->play_pos.last_y != \
+	vars->play_pos.y)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->free_space.img, vars->last_x_pos, vars->last_y_pos);
+		vars->free_space.img, vars->play_pos.last_x * vars->player.width, vars->play_pos.last_y * vars->player.height);
+		vars->play_pos.last_x = vars->play_pos.x;
+		vars->play_pos.last_y = vars->play_pos.y;
 	}
-}
-
-void put_collectible(t_mlx_datas *vars)
-{
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->collectible.img, 280, 210);
 }
 
 void put_player(t_mlx_datas *vars)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, vars->player.x, vars->player.y);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, vars->play_pos.x * vars->player.width, vars->play_pos.y * vars->player.height);
 }
 
 int render_next_frame(t_mlx_datas *vars)
 {
 	put_player(vars);
 	put_free_space(vars);
-	put_collectible(vars);
 	return (0);
 }
-
-
 
 int main(int ac, char **av)
 {
@@ -107,9 +130,11 @@ int main(int ac, char **av)
 	map = map_parser(&map_datas, av[1]);
 	if (error_msg(map, "Invalid map.\n"))
 		return (-1);
+	vars.map_datas = map_datas;
+	vars.map = map;
 	if (init_mlx_datas_struct(&vars) == -1)
 		return (-1);
-	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_key_hook(vars.win, key_hook_2, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars);
 	init_tmp(&vars);
 	init_map(&vars);

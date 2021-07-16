@@ -40,13 +40,11 @@ int init_mlx_datas_struct(t_mlx_datas *vars)
 	vars->mlx = mlx_init();
 	if (error_msg(vars->mlx, "mlx_init has failed.\n"))
 		return (0);
-	vars->last_x_pos = 0;
-	vars->last_y_pos = 0;
 	vars->moves = 0;
 	if (init_img_datas_struct(vars) == -1)
 		return (-1);
-	vars->win_size_x = vars->free_space.width * 13;// change the multiplicater in accordance 
-	vars->win_size_y = vars->free_space.height * 8;// with the map given as parameter
+	vars->win_size_x = vars->free_space.width * vars->map_datas.width;
+	vars->win_size_y = vars->free_space.height * vars->map_datas.height;
 	vars->win = mlx_new_window(vars->mlx, vars->win_size_x, vars->win_size_y, "so_long");
 	if (error_msg(vars->win, "Opening a new window has failed.\n"))
 		return (0);
@@ -67,22 +65,67 @@ void init_map_datas_struct(t_map_datas *map)
 	map->exit = 0;
 }
 
+void init_put_exit(t_mlx_datas *vars, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->exit.img, x, y);
+}
+
+void init_put_collectible(t_mlx_datas *vars, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->collectible.img, x, y);
+}
+
+void init_put_player(t_mlx_datas *vars, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, x, y);
+}
+
+void init_put_free_space(t_mlx_datas *vars, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->free_space.img, x, y);
+}
+
+void init_put_wall(t_mlx_datas *vars, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->wall.img, x, y);
+}
+
 void init_map(t_mlx_datas *vars)
 {
+	int i;
+	int j;
 	int x;
 	int y;
 
-	x = 0;
-	while (x < vars->win_size_x)
+	y = 0;
+	i = 0;
+	while (vars->map[i] != NULL)
 	{
-		y = 0;
-		while (y < vars->win_size_y)
+		x = 0;
+		j = 0;
+		while (vars->map[i][j] != '\0')
 		{
-			mlx_put_image_to_window(vars->mlx, vars->win,
-									vars->free_space.img, x, y);
-			y = y + vars->free_space.height;
+			if (vars->map[i][j] == '1')
+				init_put_wall(vars, x, y);
+			else if (vars->map[i][j] == '0')
+				init_put_free_space(vars, x, y);
+			else if (vars->map[i][j] == 'C')
+				init_put_collectible(vars, x, y);
+			else if (vars->map[i][j] == 'E')
+				init_put_exit(vars, x, y);
+			else if (vars->map[i][j] == 'P')
+			{
+				vars->play_pos.x = j;
+				vars->play_pos.y = i; 
+				vars->play_pos.last_x = j;
+				vars->play_pos.last_y = i;
+				init_put_player(vars, x, y);
+			}
+			x = x + vars->free_space.height;
+			j++;
 		}
-		x = x + vars->free_space.width;
+		y = y + vars->free_space.width;
+		i++;
 	}
-	vars->tmp_free_space = 1;
+	//vars->tmp_free_space = 1; // <- USELESS ???
 }

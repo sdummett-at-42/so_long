@@ -34,14 +34,22 @@ typedef struct s_map_datas
 	int tmp; // to remove
  }				t_img_datas;
 
+typedef struct s_player_pos
+{
+	int x;
+	int y;
+	int last_x;
+	int last_y;
+
+}				t_player_pos;
+
 typedef struct s_mlx_datas
 {
 	void *mlx;
 	void *win;
+	char **map;
 	int win_size_x;
 	int win_size_y;
-	int last_x_pos;
-	int last_y_pos;
 	int moves;
 	int tmp_free_space;
 	t_img_datas free_space;
@@ -49,6 +57,8 @@ typedef struct s_mlx_datas
 	t_img_datas collectible;
 	t_img_datas player;
 	t_img_datas exit;
+	t_map_datas map_datas;
+	t_player_pos play_pos;
 } t_mlx_datas;
 
 int error_msg(void *ptr, char *msg);
