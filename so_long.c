@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/14 22:24:10 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:10:33 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,19 @@ void init_tmp(t_mlx_datas *vars)
 
 int player_can_move(t_mlx_datas *vars, int x, int y)
 {
-	if (vars->map[y][x] == '1') // || vars->map[y][x] == 'E') <- ???
+	if (vars->map[y][x] == 'C')
+	{
+		vars->map_datas.collectible--;
+		vars->map[y][x] = '0';
+	}
+	else if (vars->map[y][x] == 'E' && vars->map_datas.collectible == 0)
+	{
+		// Quit the game
+		mlx_destroy_window(vars->mlx, vars->win);
+	}
+	else if (vars->map[y][x] == '1' || vars->map[y][x] == 'E')
 		return (0);
+
 	return (1);
 }
 
@@ -53,7 +64,7 @@ void move_right(t_mlx_datas *vars)
 	vars->play_pos.x++;
 }
 
-int key_hook_2(int keycode, t_mlx_datas *vars)
+int mov_key_hook(int keycode, t_mlx_datas *vars)
 {
 
 	if (keycode == 'd')
@@ -90,8 +101,7 @@ int key_hook_2(int keycode, t_mlx_datas *vars)
 			vars->moves++;
 		}
 	}
-
-	printf("%d\n", vars->moves); // /!\ PRINTF !
+	printf("moves : %d\n", vars->moves); // /!\ PRINTF !
 	return (0);
 }
 
@@ -134,8 +144,8 @@ int main(int ac, char **av)
 	vars.map = map;
 	if (init_mlx_datas_struct(&vars) == -1)
 		return (-1);
-	mlx_key_hook(vars.win, key_hook_2, &vars);
-	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars);
+	mlx_key_hook(vars.win, mov_key_hook, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars); // utiliser close_win dans mlx_key_hook ???
 	init_tmp(&vars);
 	init_map(&vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
