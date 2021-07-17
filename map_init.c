@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 20:29:19 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/17 23:41:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void	init_put_collectible(t_mlx_datas *vars, int x, int y)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->collect_imgs.kunai_0.img, x, y);
 }
 
-// void	init_put_player(t_mlx_datas *vars, int x, int y)
-// {
-// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, x, y);
-// }
 void	init_put_player(t_mlx_datas *vars, int x, int y)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, x, y);
@@ -70,6 +66,10 @@ void	init_map(t_mlx_datas *vars)
 				vars->play_pos.y = i;
 				vars->play_pos.last_x = j;
 				vars->play_pos.last_y = i;
+				vars->play_pos.up = 0;
+				vars->play_pos.down = 0;
+				vars->play_pos.left = 0;
+				vars->play_pos.right= 0;
 				init_put_player(vars, x, y);
 			}
 			x = x + vars->free_space.height;

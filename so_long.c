@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 21:13:28 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 00:28:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,36 +59,93 @@ int	player_can_move(t_mlx_datas *vars, int x, int y)
 	return (1);
 }
 
-void	move_up(t_mlx_datas *vars)
-{
-	vars->play_pos.y--;
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.back.img, \
-					vars->play_pos.x * vars->play_imgs.back.width, \
-					vars->play_pos.y * vars->play_imgs.back.height);
-}
+
 
 void	move_down(t_mlx_datas *vars)
 {
-	vars->play_pos.y++;
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, \
-					vars->play_pos.x * vars->play_imgs.front.width, \
-					vars->play_pos.y * vars->play_imgs.front.height);
+	static int i = 0;
+
+	if (i == 0 )
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_0.img, \
+					vars->play_pos.x * vars->mov_imgs.front_0.width, \
+					vars->play_pos.y * vars->mov_imgs.front_0.height - 28);
+	}
+	else if (i == 1)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_1.img, \
+					vars->play_pos.x * vars->mov_imgs.front_1.width, \
+					vars->play_pos.y * vars->mov_imgs.front_1.height - 24);
+	}
+	else if (i == 2)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_2.img, \
+					vars->play_pos.x * vars->mov_imgs.front_2.width, \
+					vars->play_pos.y * vars->mov_imgs.front_2.height - 20);
+	}
+	else if (i == 3)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_3.img, \
+					vars->play_pos.x * vars->mov_imgs.front_3.width, \
+					vars->play_pos.y * vars->mov_imgs.front_3.height - 16);
+	}
+	else if (i == 4)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_4.img, \
+					vars->play_pos.x * vars->mov_imgs.front_4.width, \
+					vars->play_pos.y * vars->mov_imgs.front_4.height - 12);
+	}
+	else if (i == 5)
+	{
+		// mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_5.img, \
+	// 				vars->play_pos.x * vars->mov_imgs.front_5.width, \
+	// 				vars->play_pos.y * vars->mov_imgs.front_5.height}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_6.img, \
+					vars->play_pos.x * vars->mov_imgs.front_6.width, \
+					vars->play_pos.y * vars->mov_imgs.front_6.height - 8);
+	}
+	else if (i == 6)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->mov_imgs.front_7.img, \
+					vars->play_pos.x * vars->mov_imgs.front_7.width, \
+					vars->play_pos.y * vars->mov_imgs.front_7.height - 4);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, \
+					vars->play_pos.x * vars->mov_imgs.front_7.width, \
+					vars->play_pos.y * vars->mov_imgs.front_7.height);
+		vars->play_pos.down = 0;
+		put_free_space(vars);
+
+	}
+	i++;
+	if (i == 7)
+		i = 0;
+}
+
+void	move_up(t_mlx_datas *vars)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.back.img, \
+					vars->play_pos.x * vars->play_imgs.back.width, \
+					vars->play_pos.y * vars->play_imgs.back.height);
+	vars->play_pos.up = 0;
+	put_free_space(vars);
 }
 
 void	move_left(t_mlx_datas *vars)
 {
-	vars->play_pos.x--;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.left.img, \
 					vars->play_pos.x * vars->play_imgs.left.width, \
 					vars->play_pos.y * vars->play_imgs.left.height);
+	vars->play_pos.left = 0;
+	put_free_space(vars);
 }
 
 void	move_right(t_mlx_datas *vars)
 {
-	vars->play_pos.x++;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.right.img, \
 					vars->play_pos.x * vars->play_imgs.right.width, \
 					vars->play_pos.y * vars->play_imgs.right.height);
+	vars->play_pos.right = 0;
+	put_free_space(vars);
 }
 
 int	mov_key_hook(int keycode, t_mlx_datas *vars)
@@ -97,7 +154,8 @@ int	mov_key_hook(int keycode, t_mlx_datas *vars)
 	{
 		if (player_can_move(vars, vars->play_pos.x + 1, vars->play_pos.y))
 		{
-			move_right(vars);
+			vars->play_pos.x++;
+			vars->play_pos.right = 1;
 			vars->moves++;
 		}
 	}
@@ -105,7 +163,8 @@ int	mov_key_hook(int keycode, t_mlx_datas *vars)
 	{
 		if (player_can_move(vars, vars->play_pos.x - 1, vars->play_pos.y))
 		{
-			move_left(vars);
+			vars->play_pos.x--;
+			vars->play_pos.left = 1;
 			vars->moves++;
 		}
 	}
@@ -113,7 +172,8 @@ int	mov_key_hook(int keycode, t_mlx_datas *vars)
 	{
 		if (player_can_move(vars, vars->play_pos.x, vars->play_pos.y + 1))
 		{
-			move_down(vars);
+			vars->play_pos.y++;
+			vars->play_pos.down = 1;
 			vars->moves++;
 		}
 	}
@@ -121,21 +181,13 @@ int	mov_key_hook(int keycode, t_mlx_datas *vars)
 	{
 		if (player_can_move(vars, vars->play_pos.x, vars->play_pos.y - 1))
 		{
-			move_up(vars);
+			vars->play_pos.y--;
+			vars->play_pos.up = 1;
 			vars->moves++;
 		}
 	}
-	put_free_space(vars);
 	printf("moves : %d\n", vars->moves); // /!\ PRINTF !
 	return (0);
-}
-
-
-void	put_player(t_mlx_datas *vars)
-{
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, \
-					vars->play_pos.x * vars->play_imgs.front.width, \
-					vars->play_pos.y * vars->play_imgs.front.height);
 }
 
 void	put_animated_img(t_mlx_datas *vars, int img, int x, int y)
@@ -198,7 +250,17 @@ void	put_collectible(t_mlx_datas *vars)
 	if (i == 11)
 		i = 1;
 }
-
+void	put_animated_movements(t_mlx_datas*vars)
+{
+	if (vars->play_pos.down == 1)
+		move_down(vars);
+	if (vars->play_pos.up == 1)
+		move_up(vars);
+	if (vars->play_pos.left == 1)
+		move_left(vars);
+	if (vars->play_pos.right == 1)
+		move_right(vars);
+}
 int	render_next_frame(t_mlx_datas *vars)
 {
 	static int i = 0;
@@ -208,6 +270,7 @@ int	render_next_frame(t_mlx_datas *vars)
 	{
 		// put_free_space(vars);
 		put_collectible(vars);
+		put_animated_movements(vars);
 		i = 0;
 	}
 	return (0);
@@ -234,5 +297,6 @@ int	main(int ac, char **av)
 	init_map(&vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_loop(vars.mlx);
+	exit(1);
 	return (0);
 }

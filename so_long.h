@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 20:08:24 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 00:08:28 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_img_datas
 	int		y;
 }	t_img_datas;
 
+// FUSIONNER
+
 typedef struct s_player_imgs
 {
 	t_img_datas front;
@@ -43,6 +45,20 @@ typedef struct s_player_imgs
 	t_img_datas left;
 	t_img_datas right;
 }	t_player_imgs;
+
+typedef struct s_mov_imgs
+{
+	t_img_datas front_0;
+	t_img_datas	front_1;
+	t_img_datas	front_2;
+	t_img_datas	front_3;
+	t_img_datas	front_4;
+	t_img_datas	front_5;
+	t_img_datas	front_6;
+	t_img_datas	front_7;
+}	t_mov_imgs;
+
+//////////////////////////
 
 typedef struct s_collect_imgs
 {
@@ -65,7 +81,10 @@ typedef struct s_player_pos
 	int	y;
 	int	last_x;
 	int	last_y;
-
+	int	up;
+	int	down;
+	int left;
+	int right;
 }	t_player_pos;
 
 typedef struct s_mlx_datas
@@ -86,6 +105,7 @@ typedef struct s_mlx_datas
 	t_player_pos	play_pos;
 	t_player_imgs	play_imgs;
 	t_collect_imgs	collect_imgs;
+	t_mov_imgs		mov_imgs;
 }	t_mlx_datas;
 
 int		error_msg(void *ptr, char *msg);
