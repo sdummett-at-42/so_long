@@ -1,11 +1,11 @@
 #include "so_long.h"
 
-int get_line_number(char *file)
+int	get_line_number(char *file)
 {
-	int size;
-	int fd;
-	int ret;
-	char *tmp;
+	int		size;
+	int		fd;
+	int		ret;
+	char	*tmp;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -23,11 +23,11 @@ int get_line_number(char *file)
 	return (size);
 }
 
-int fill_map(char *file, char **map)
+int	fill_map(char *file, char **map)
 {
-	int i;
-	int fd;
-	int ret;
+	int	i;
+	int	fd;
+	int	ret;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -46,12 +46,11 @@ int fill_map(char *file, char **map)
 	return (0);
 }
 
-int check_walls(char **map, int size)
+int	check_walls(char **map, int size)
 {
-	int i;
-	int width;
+	int	i;
+	int	width;
 
-	
 	i = 0;
 	while ((*map)[i] != '\0')
 	{
@@ -80,45 +79,45 @@ int check_walls(char **map, int size)
 		map++;
 	}
 	return (width);
-} 
+}
 
-int is_player(char c)
+int	is_player(char c)
 {
 	if (c == 'P')
 		return (1);
 	return (0);
 }
-int is_collectible(char c)
+
+int	is_collectible(char c)
 {
 	if (c == 'C')
 		return (1);
 	return (0);
 }
 
-int is_exit(char c)
+int	is_exit(char c)
 {
 	if (c == 'E')
 		return (1);
 	return (0);
 }
 
-int is_wall(char c)
+int	is_wall(char c)
 {
 	if (c == '1')
 		return (1);
 	return (0);
 }
 
-int is_free_space(char c)
+int	is_free_space(char c)
 {
 	if (c == '0')
 		return (1);
 	return (0);
 }
 
-int map_has_player_exit_and_collectible(t_map_datas *map_datas)
+int	map_has_player_exit_and_collectible(t_map_datas *map_datas)
 {
-
 	if (map_datas->player != 1)
 		return (-1);
 	if (map_datas->collectible == 0)
@@ -128,10 +127,10 @@ int map_has_player_exit_and_collectible(t_map_datas *map_datas)
 	return (0);
 }
 
-int check_map(char **map, t_map_datas *map_datas)
+int	check_map(char **map, t_map_datas *map_datas)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < map_datas->height)
@@ -156,11 +155,10 @@ int check_map(char **map, t_map_datas *map_datas)
 		}
 		i++;
 	}
-
 	return (map_has_player_exit_and_collectible(map_datas));
 }
 
-int is_valid_map(char **map, t_map_datas *map_datas)
+int	is_valid_map(char **map, t_map_datas *map_datas)
 {
 	map_datas->width = check_walls(map, map_datas->height);
 	if (map_datas->width == -1)
@@ -170,15 +168,16 @@ int is_valid_map(char **map, t_map_datas *map_datas)
 	return (0);
 }
 
-char **map_parser(t_map_datas *map_datas, char *file)
+char	**map_parser(t_map_datas *map_datas, char *file)
 {
-	char **map;
+	char	**map;
 
 	init_map_datas_struct(map_datas);
 	map_datas->height = get_line_number(file);
 	if (map_datas->height == -1)
 	{
-		ft_putstr("Error: Getting the map_datas->height of the map has failed.\n");
+		ft_putstr("Error: Getting the map_datas->height of \
+				the map has failed.\n");
 		return (NULL);
 	}
 	else if (map_datas->height < 3)

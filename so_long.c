@@ -6,13 +6,13 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/16 13:10:33 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/17 10:20:58 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void init_tmp(t_mlx_datas *vars)
+void	init_tmp(t_mlx_datas *vars)
 {
 	vars->free_space.x = 0;
 	vars->free_space.y = 0;
@@ -26,7 +26,7 @@ void init_tmp(t_mlx_datas *vars)
 	vars->exit.y = 0;
 }
 
-int player_can_move(t_mlx_datas *vars, int x, int y)
+int	player_can_move(t_mlx_datas *vars, int x, int y)
 {
 	if (vars->map[y][x] == 'C')
 	{
@@ -35,38 +35,38 @@ int player_can_move(t_mlx_datas *vars, int x, int y)
 	}
 	else if (vars->map[y][x] == 'E' && vars->map_datas.collectible == 0)
 	{
-		// Quit the game
+		/*
+		** Quit the game.
+		*/
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
 	else if (vars->map[y][x] == '1' || vars->map[y][x] == 'E')
 		return (0);
-
 	return (1);
 }
 
-void move_up(t_mlx_datas *vars)
+void	move_up(t_mlx_datas *vars)
 {
 	vars->play_pos.y--;
 }
 
-void move_down(t_mlx_datas *vars)
+void	move_down(t_mlx_datas *vars)
 {
 	vars->play_pos.y++;
 }
 
-void move_left(t_mlx_datas *vars)
+void	move_left(t_mlx_datas *vars)
 {
 	vars->play_pos.x--;
 }
 
-void move_right(t_mlx_datas *vars)
+void	move_right(t_mlx_datas *vars)
 {
 	vars->play_pos.x++;
 }
 
-int mov_key_hook(int keycode, t_mlx_datas *vars)
+int	mov_key_hook(int keycode, t_mlx_datas *vars)
 {
-
 	if (keycode == 'd')
 	{
 		if (player_can_move(vars, vars->play_pos.x + 1, vars->play_pos.y))
@@ -74,7 +74,6 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 			move_right(vars);
 			vars->moves++;
 		}
-		
 	}
 	if (keycode == 'a')
 	{
@@ -83,7 +82,6 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 			move_left(vars);
 			vars->moves++;
 		}
-
 	}
 	if (keycode == 's')
 	{
@@ -105,7 +103,7 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 	return (0);
 }
 
-void put_free_space(t_mlx_datas *vars)
+void	put_free_space(t_mlx_datas *vars)
 {
 	if (vars->play_pos.last_x != vars->play_pos.x || vars->play_pos.last_y != \
 	vars->play_pos.y)
@@ -117,22 +115,24 @@ void put_free_space(t_mlx_datas *vars)
 	}
 }
 
-void put_player(t_mlx_datas *vars)
+void	put_player(t_mlx_datas *vars)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, vars->play_pos.x * vars->player.width, vars->play_pos.y * vars->player.height);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, \
+					vars->play_pos.x * vars->player.width, \
+					vars->play_pos.y * vars->player.height);
 }
 
-int render_next_frame(t_mlx_datas *vars)
+int	render_next_frame(t_mlx_datas *vars)
 {
 	put_player(vars);
 	put_free_space(vars);
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_mlx_datas vars;
-	t_map_datas map_datas;
+	t_mlx_datas	vars;
+	t_map_datas	map_datas;
 	char		**map;
 
 	if (check_params(ac, av) == -1)

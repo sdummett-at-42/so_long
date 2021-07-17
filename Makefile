@@ -6,7 +6,7 @@
 #    By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:50:30 by sdummett          #+#    #+#              #
-#    Updated: 2021/07/16 12:26:00 by sdummett         ###   ########.fr        #
+#    Updated: 2021/07/17 09:44:43 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC		= so_long.c \
 			map_parser.c \
 			init_funcs.c \
 			ft_putstr.c \
+			map_init.c \
 			debugging_funcs.c
 OBJ		= $(SRC:.c=.o)
 
@@ -41,7 +42,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C minilibx-linux
 	$(CC) $(OBJ) -o $(NAME) -lXext -lX11 -lm  minilibx-linux/libmlx_Linux.a
-#$(CC) -o $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -D BUFFER_SIZE=1000 -o $@ $<

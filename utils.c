@@ -6,19 +6,19 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/16 13:09:52 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/17 10:22:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int check_extension(char *file)
+static int	check_extension(char *file)
 {
-	int i;
-	int check;
+	int	i;
+	int	check;
 
 	i = 0;
-	while(file[i] != '\0')
+	while (file[i] != '\0')
 		i++;
 	if (i == 0)
 		return (-1);
@@ -43,7 +43,7 @@ static int check_extension(char *file)
 	return (0);
 }
 
-int check_params(int ac, char **av)
+int	check_params(int ac, char **av)
 {
 	if (ac < 2)
 	{
@@ -66,7 +66,7 @@ int check_params(int ac, char **av)
 	return (0);
 }
 
-int error_msg(void *ptr, char *msg)
+int	error_msg(void *ptr, char *msg)
 {
 	if (ptr == NULL)
 	{
@@ -76,7 +76,7 @@ int error_msg(void *ptr, char *msg)
 	return (0);
 }
 
-int close_win(int keycode, t_mlx_datas *vars)
+int	close_win(int keycode, t_mlx_datas *vars)
 {
 	if (keycode == 65307)
 	{
