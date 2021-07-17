@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 10:12:10 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/17 20:29:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ void	init_put_exit(t_mlx_datas *vars, int x, int y)
 
 void	init_put_collectible(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->collectible.img, x, y);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->collect_imgs.kunai_0.img, x, y);
 }
 
+// void	init_put_player(t_mlx_datas *vars, int x, int y)
+// {
+// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, x, y);
+// }
 void	init_put_player(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->player.img, x, y);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, x, y);
 }
 
 void	init_put_free_space(t_mlx_datas *vars, int x, int y)

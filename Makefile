@@ -6,7 +6,7 @@
 #    By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:50:30 by sdummett          #+#    #+#              #
-#    Updated: 2021/07/17 09:44:43 by sdummett         ###   ########.fr        #
+#    Updated: 2021/07/17 19:15:29 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C minilibx-linux
-	$(CC) $(OBJ) -o $(NAME) -lXext -lX11 -lm  minilibx-linux/libmlx_Linux.a
+	$(CC) $(OBJ) -o $(NAME) -lXext -lX11 -lm minilibx-linux/libmlx_Linux.a
 
 %.o: %.c
 	$(CC) $(CFLAGS) -D BUFFER_SIZE=1000 -o $@ $<
