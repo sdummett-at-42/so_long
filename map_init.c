@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 23:41:48 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 13:04:33 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	init_put_exit(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->exit.img, x, y);
+	put_img(vars, vars->exit.img, x, y);
 }
 
 void	init_put_collectible(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->collect_imgs.kunai_0.img, x, y);
+	put_img(vars, vars->collect_imgs.kunai_0.img, x, y);
 }
 
 void	init_put_player(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->play_imgs.front.img, x, y);
+	put_img(vars, vars->p_front.front.img, x, y);
 }
 
 void	init_put_free_space(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->free_space.img, x, y);
+	put_img(vars, vars->free_space.img, x, y);
 }
 
 void	init_put_wall(t_mlx_datas *vars, int x, int y)
 {
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->wall.img, x, y);
+	put_img(vars, vars->wall.img, x, y);
 }
 
 void	init_map(t_mlx_datas *vars)
@@ -72,10 +72,10 @@ void	init_map(t_mlx_datas *vars)
 				vars->play_pos.right= 0;
 				init_put_player(vars, x, y);
 			}
-			x = x + vars->free_space.height;
+			x = x + vars->height;
 			j++;
 		}
-		y = y + vars->free_space.width;
+		y = y + vars->width;
 		i++;
 	}
 }

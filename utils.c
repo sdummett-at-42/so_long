@@ -6,11 +6,43 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/17 10:22:32 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 13:22:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/*
+** Classic ft_putstr.
+*/
+
+static int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
+
+void	ft_putstr(char *str)
+{
+	write(1, str, ft_strlen(str));
+}
+
+/*
+** put_img is less verbose than mlx_put_image_to_window.
+*/
+
+void put_img(t_mlx_datas *vars, void *img, int x, int y)
+{
+	mlx_put_image_to_window(vars->mlx, vars->win, img, x, y);
+}
+
+/*
+** Check the extension of the file given. (*.ber)
+*/
 
 static int	check_extension(char *file)
 {
@@ -43,6 +75,10 @@ static int	check_extension(char *file)
 	return (0);
 }
 
+/*
+** 	Check if the arg is valid.
+*/
+
 int	check_params(int ac, char **av)
 {
 	if (ac < 2)
@@ -65,6 +101,10 @@ int	check_params(int ac, char **av)
 	}
 	return (0);
 }
+
+/*
+** Check if the ptr is NULL and print an error message if it is.
+*/
 
 int	error_msg(void *ptr, char *msg)
 {

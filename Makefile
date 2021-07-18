@@ -6,7 +6,7 @@
 #    By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:50:30 by sdummett          #+#    #+#              #
-#    Updated: 2021/07/17 19:15:29 by sdummett         ###   ########.fr        #
+#    Updated: 2021/07/18 13:25:41 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,12 @@ SRC		= so_long.c \
 			gnl/get_next_line_utils.c \
 			map_parser.c \
 			init_funcs.c \
-			ft_putstr.c \
 			map_init.c \
+			collectible_img.c \
+			player_img.c \
+			player_mov.c \
+			animated_collectibles.c \
+			key_hooks.c \
 			debugging_funcs.c
 OBJ		= $(SRC:.c=.o)
 
