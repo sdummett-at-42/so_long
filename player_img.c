@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:57:47 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 18:43:29 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:03:31 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,65 @@ int init_p_win_imgs(t_mlx_datas *vars)
 	vars->p_win.win_7.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_win_7.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_win.win_7.img, "Image reading has failed.\n"))
+		return (-1);
+	return (0);
+}
+
+int init_p_lost_imgs(t_mlx_datas *vars)
+{
+	vars->p_lost.lost_0.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/p_lost_0.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->p_lost.lost_0.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->p_lost.lost_1.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/p_lost_1.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->p_lost.lost_1.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->p_lost.lost_2.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/p_lost_2.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->p_lost.lost_2.img, "Image reading has failed.\n"))
+		return (-1);
+	return (0);
+}
+
+int init_tobi_imgs(t_mlx_datas *vars)
+{
+	vars->tobi.stand.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/tobi.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->tobi.stand.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->tobi.exit_0.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/tobi_0.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->tobi.exit_0.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->tobi.exit_1.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/tobi_1.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->tobi.exit_1.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->tobi.exit_2.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/tobi_2.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->tobi.exit_2.img, "Image reading has failed.\n"))
+		return (-1);
+	return (0);
+}
+
+int init_madara_imgs(t_mlx_datas *vars)
+{
+	vars->madara.stand.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/m_stand.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->madara.stand.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->madara.atk_0.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/m_atk_0.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->madara.atk_0.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->madara.atk_1.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/m_atk_1.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->madara.atk_1.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->madara.atk_2.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/m_atk_2.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->madara.atk_2.img, "Image reading has failed.\n"))
 		return (-1);
 	return (0);
 }

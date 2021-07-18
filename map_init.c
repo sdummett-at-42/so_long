@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 19:02:37 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:03:07 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_put_exit(t_mlx_datas *vars, int x, int y)
 {
-	put_img(vars, vars->exit.img, x, y);
+	put_img(vars, vars->tobi.stand.img, x, y);
 }
 
 void	init_put_collectible(t_mlx_datas *vars, int x, int y)
@@ -35,6 +35,11 @@ void	init_put_free_space(t_mlx_datas *vars, int x, int y)
 void	init_put_wall(t_mlx_datas *vars, int x, int y)
 {
 	put_img(vars, vars->wall.img, x, y);
+}
+
+void	init_put_madara(t_mlx_datas *vars, int x, int y)
+{
+	put_img(vars, vars->madara.stand.img, x, y);
 }
 
 void	init_map(t_mlx_datas *vars)
@@ -60,6 +65,8 @@ void	init_map(t_mlx_datas *vars)
 				init_put_collectible(vars, x, y);
 			else if (vars->map[i][j] == 'E')
 				init_put_exit(vars, x, y);
+			else if (vars->map[i][j] == 'M')
+				init_put_madara(vars, x, y);
 			else if (vars->map[i][j] == 'P')
 			{
 				vars->play_pos.x = j;

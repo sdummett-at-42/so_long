@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 19:00:57 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:09:09 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,16 @@ int	render_next_frame(t_mlx_datas *vars)
 	i++;
 	if (i == 1500)
 	{
-		put_animated_movements(vars);
-		if (vars->play_pos.won == 1)
+		if (vars->play_pos.won == 2)
 			win_animation(vars);
+		else if (vars->play_pos.won == 1)
+			tobi_tp_animation(vars);
+		else if (vars->play_pos.lost == 2)
+			madara_atk_animation(vars);
+		else if (vars->play_pos.lost == 1)
+			lost_animation(vars);
+		else
+			put_animated_movements(vars);
 	}
 	if (i == 7500)
 	{

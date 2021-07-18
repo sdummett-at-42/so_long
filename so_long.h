@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 19:01:45 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:06:59 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,30 @@ typedef struct s_p_win
 	t_img_datas win_7;
 }	t_p_win;
 
+typedef struct s_madara
+{
+	t_img_datas stand;
+	t_img_datas atk_0;
+	t_img_datas atk_1;
+	t_img_datas atk_2;
+	t_img_datas atk_3;
+}	t_madara;
+
+typedef struct s_tobi
+{
+	t_img_datas stand;
+	t_img_datas	exit_0;
+	t_img_datas	exit_1;
+	t_img_datas exit_2;
+}	t_tobi;
+
+typedef struct s_p_lost
+{
+	t_img_datas lost_0;
+	t_img_datas lost_1;
+	t_img_datas lost_2;
+}	t_p_lost;
+
 typedef struct s_player_pos
 {
 	int	x;
@@ -129,6 +153,9 @@ typedef struct s_mlx_datas
 	t_p_right		p_right;
 	t_p_left		p_left;
 	t_p_win			p_win;
+	t_p_lost		p_lost;
+	t_madara		madara;
+	t_tobi			tobi;
 }	t_mlx_datas;
 
 int		error_msg(void *ptr, char *msg);
@@ -145,14 +172,21 @@ int		init_collectible_img_struct(t_mlx_datas *vars);
 int		init_p_down_imgs(t_mlx_datas*vars);
 int		init_p_right_imgs(t_mlx_datas *vars);
 int		init_p_left_imgs(t_mlx_datas *vars);
+int 	init_p_win_imgs(t_mlx_datas *vars);
+int		init_p_lost_imgs(t_mlx_datas *vars);
+int		init_madara_imgs(t_mlx_datas *vars);
+int		init_tobi_imgs(t_mlx_datas *vars);
 void	move_up(t_mlx_datas *vars);
 void	move_down(t_mlx_datas *vars);
 void	move_left(t_mlx_datas *vars);
 void	move_right(t_mlx_datas *vars);
 void	win_animation(t_mlx_datas *vars);
+void	lost_animation(t_mlx_datas *vars);
+void	madara_atk_animation(t_mlx_datas *vars);
+void	tobi_tp_animation(t_mlx_datas *vars);
 void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
-int init_p_win_imgs(t_mlx_datas *vars);
+
 
 
 /*

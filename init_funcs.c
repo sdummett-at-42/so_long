@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 18:36:21 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:02:36 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static int	init_img_datas_struct(t_mlx_datas *vars)
 		return(-1);
 	if (init_p_win_imgs(vars) == -1)
 		return (-1);
-	vars->exit.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/tobi.xpm", &vars->width, &vars->height);
-	vars->exit.x = 0;
-	vars->exit.y = 0;
-	if (error_msg(vars->exit.img, "Image reading has failed.\n"))
+	if (init_p_lost_imgs(vars) == -1)
+		return (-1);
+	if (init_madara_imgs(vars) == -1)
+		return (-1);
+	if (init_tobi_imgs(vars) == -1)
 		return (-1);
 	return (0);
 }

@@ -81,6 +81,13 @@ int	check_walls(char **map, int size)
 	return (width);
 }
 
+int is_madara(char c)
+{
+	if (c == 'M')
+		return (1);
+	return (0);
+}
+
 int	is_player(char c)
 {
 	if (c == 'P')
@@ -138,7 +145,8 @@ int	check_map(char **map, t_map_datas *map_datas)
 		j = 0;
 		while (map[i][j] != '\0')
 		{
-			if (is_free_space(map[i][j]) || is_wall(map[i][j]))
+			if ((is_free_space(map[i][j]) || is_wall(map[i][j])) || \
+			is_madara(map[i][j]))
 			{
 				j++;
 				continue ;

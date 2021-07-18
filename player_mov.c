@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 19:03:32 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:12:36 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,75 @@ void win_animation(t_mlx_datas *vars)
 		put_img(vars, vars->p_win.win_7.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, \
+		vars->free_space.img, vars->play_pos.x * vars->width, \
+		vars->play_pos.y * vars->height);
+		vars->play_pos.won = 1;
+	}
+	i++;
+}
+
+void lost_animation(t_mlx_datas *vars)
+{
+	static int i = 0;
+
+	if (i == 0)
+		put_img(vars, vars->p_lost.lost_0.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 1)
+		put_img(vars, vars->p_lost.lost_1.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 2)
+	{
+		put_img(vars, vars->p_lost.lost_2.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+		mlx_destroy_window(vars->mlx, vars->win);
+	}
+	i++;
+}
+
+void	madara_atk_animation(t_mlx_datas *vars)
+{
+	static int i = 0;
+
+	if (i == 0)
+		put_img(vars, vars->madara.atk_0.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
+	else if (i == 1)
+		put_img(vars, vars->madara.atk_1.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
+	else if (i == 2)
+	{
+		put_img(vars, vars->madara.atk_2.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
+		vars->play_pos.lost = 1;
+	}
+	i++;
+}
+
+void	tobi_tp_animation(t_mlx_datas *vars)
+{
+	static int i = 0;
+
+	if (i == 0)
+		put_img(vars, vars->tobi.exit_0.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
+	else if (i == 1)
+		put_img(vars, vars->tobi.exit_1.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
+	else if (i == 2)
+	{
+		put_img(vars, vars->tobi.exit_2.img, \
+					vars->play_pos.last_x * vars->width, \
+					vars->play_pos.last_y * vars->height);
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
 	i++;
