@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:19:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:19:43 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 16:53:56 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	animate_collect(t_mlx_datas *vars, int img, int x, int y)
 	else if (img == 10)
 		put_img(vars, vars->collect_imgs.kunai_10.img, x * \
 		vars->width, y * vars->height);
-
 }
 
 void	put_collectible(t_mlx_datas *vars)

@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:33:38 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 17:20:53 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 static int	init_player_img_struct(t_mlx_datas *vars)
 {
-
 	vars->play_imgs.back.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/p_up.xpm", &vars->width, &vars->height);
+	"sprites/p_stand_right.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->play_imgs.back.img, "Image reading has failed.\n"))
 		return (-1);
 	vars->play_imgs.left.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/p_left.xpm", &vars->width, &vars->height);
+	"sprites/p_stand_left.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->play_imgs.left.img, "Image reading has failed.\n"))
 		return (-1);
 	vars->play_imgs.right.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/p_right.xpm", &vars->width, &vars->height);
+	"sprites/p_stand_right.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->play_imgs.right.img, "Image reading has failed.\n"))
 		return (-1);
 	return (0);
@@ -48,10 +47,14 @@ static int	init_img_datas_struct(t_mlx_datas *vars)
 		return (-1);
 	if (init_player_img_struct(vars) == -1)
 		return (-1);
-	if (init_p_front_struct(vars) == -1)
+	if (init_p_down_imgs(vars) == -1)
 		return (-1);
+	if (init_p_right_imgs(vars) == -1)
+		return (-1);
+	if (init_p_left_imgs(vars) == -1)
+		return(-1);
 	vars->exit.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/parchemin32px.xpm", &vars->width, &vars->height);
+	"sprites/tobi.xpm", &vars->width, &vars->height);
 	vars->exit.x = 0;
 	vars->exit.y = 0;
 	if (error_msg(vars->exit.img, "Image reading has failed.\n"))
