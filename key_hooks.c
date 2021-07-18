@@ -6,33 +6,35 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:23:59 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:27:07 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:09:08 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	player_can_move(t_mlx_datas *vars, int x, int y)
+static int player_can_move(t_mlx_datas *vars, int x, int y)
 {
-	if (vars->map[y][x] == 'C')
+	if (vars->play_pos.won == 0 && vars->play_pos.is_moving == 0)
 	{
-		vars->map_datas.collectible--;
-		vars->map[y][x] = '0';
+		if (vars->map[y][x] == 'C')
+		{
+			vars->map_datas.collectible--;
+			vars->map[y][x] = '0';
+		}
+		else if (vars->map[y][x] == 'E' && vars->map_datas.collectible == 0)
+		{
+			vars->play_pos.won = 1;
+			return (0);
+		}
+		else if (vars->map[y][x] == '1' || vars->map[y][x] == 'E')
+			return (0);
+		vars->play_pos.is_moving = 1;
+		return (1);
 	}
-	else if (vars->map[y][x] == 'E' && vars->map_datas.collectible == 0)
-	{
-		/*
-		** Quit the game.
-		*/
-		mlx_destroy_window(vars->mlx, vars->win);
-		return (0);
-	}
-	else if (vars->map[y][x] == '1' || vars->map[y][x] == 'E')
-		return (0);
-	return (1);
+	return (0);
 }
 
-int	mov_key_hook(int keycode, t_mlx_datas *vars)
+int mov_key_hook(int keycode, t_mlx_datas *vars)
 {
 	if (keycode == 'd')
 	{

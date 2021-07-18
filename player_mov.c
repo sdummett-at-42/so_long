@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 17:19:21 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:03:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,30 @@ void	move_down(t_mlx_datas *vars)
 
 	if (i == 0 )
 	{
-		put_img(vars, vars->p_down.front_0.img, \
+		put_img(vars, vars->p_down.down_0.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height - 50);
 	}
 	else if (i == 1)
 	{
-		put_img(vars, vars->p_down.front_1.img, \
+		put_img(vars, vars->p_down.down_1.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height - 33);
 	}
 	else if (i == 2)
 	{
-		put_img(vars, vars->p_down.front_2.img, \
+		put_img(vars, vars->p_down.down_2.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height - 16);
 	}
 	else if (i == 3)
 	{
-		put_img(vars, vars->p_down.front_3.img, \
+		put_img(vars, vars->p_down.down_3.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
 		vars->play_pos.down = 0;
 		put_free_space(vars);
+		vars->play_pos.is_moving = 0;
 	}
 	i++;
 	if (i == 4)
@@ -66,43 +67,36 @@ void	move_up(t_mlx_datas *vars)
 
 	if (i == 0 )
 	{
-		put_img(vars, vars->p_down.front_0.img, \
+		put_img(vars, vars->p_down.down_0.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 50);
 	}
 	else if (i == 1)
 	{
-		put_img(vars, vars->p_down.front_1.img, \
+		put_img(vars, vars->p_down.down_1.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 33);
 	}
 	else if (i == 2)
 	{
-		put_img(vars, vars->p_down.front_2.img, \
+		put_img(vars, vars->p_down.down_2.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 16);
 	}
 	else if (i == 3)
 	{
-		put_img(vars, vars->p_down.front_3.img, \
+		put_img(vars, vars->p_down.down_3.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
 		vars->play_pos.up = 0;
 		put_free_space(vars);
+		vars->play_pos.is_moving = 0;
 	}
 	i++;
 	if (i == 4)
 		i = 0;
 }
 
-// void	move_left(t_mlx_datas *vars)
-// {
-// 	put_img(vars, vars->play_imgs.left.img, \
-// 					vars->play_pos.x * vars->width, \
-// 					vars->play_pos.y * vars->height);
-// 	vars->play_pos.left = 0;
-// 	put_free_space(vars);
-// }
 void	move_left(t_mlx_datas *vars)
 {
 	static int i = 0;
@@ -135,6 +129,7 @@ void	move_left(t_mlx_datas *vars)
 					vars->play_pos.y * vars->height);
 		vars->play_pos.left = 0;
 		put_free_space(vars);
+		vars->play_pos.is_moving = 0;
 	}
 	i++;
 	if (i == 4)
@@ -173,8 +168,51 @@ void	move_right(t_mlx_datas *vars)
 					vars->play_pos.y * vars->height);
 		vars->play_pos.right = 0;
 		put_free_space(vars);
+		vars->play_pos.is_moving = 0;
 	}
 	i++;
 	if (i == 4)
 		i = 0;
+}
+
+void win_animation(t_mlx_datas *vars)
+{
+	static int i = 0;
+
+	if (i == 0)
+		put_img(vars, vars->p_win.win_0.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 1)
+		put_img(vars, vars->p_win.win_1.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 2)
+		put_img(vars, vars->p_win.win_2.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 3)
+		put_img(vars, vars->p_win.win_3.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 4)
+		put_img(vars, vars->p_win.win_4.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 5)
+		put_img(vars, vars->p_win.win_5.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 6)
+		put_img(vars, vars->p_win.win_6.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+	else if (i == 7)
+	{
+		put_img(vars, vars->p_win.win_7.img, \
+					vars->play_pos.x * vars->width, \
+					vars->play_pos.y * vars->height);
+		mlx_destroy_window(vars->mlx, vars->win);
+	}
+	i++;
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:28:17 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:00:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	init_tmp(t_mlx_datas *vars)
 	vars->wall.y = 0;
 	vars->collectible.x = 0;
 	vars->collectible.y = 0;
-	vars->player.x = 0;
-	vars->player.y = 0;
 	vars->exit.x = 0;
 	vars->exit.y = 0;
 }
@@ -44,12 +42,15 @@ int	render_next_frame(t_mlx_datas *vars)
 
 	i++;
 	if (i == 1500)
+	{
 		put_animated_movements(vars);
+		if (vars->play_pos.won == 1)
+			win_animation(vars);
+	}
 	if (i == 7500)
 	{
 		// put_free_space(vars);
 		put_collectible(vars);
-		
 		i = 0;
 	}
 	return (0);

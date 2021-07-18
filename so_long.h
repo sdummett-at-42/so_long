@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 17:17:20 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 19:01:45 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,29 @@ typedef struct s_img_datas
 	int		y;
 }	t_img_datas;
 
-// FUSIONNER
-
-typedef struct s_player_imgs
+typedef struct s_collect_imgs
 {
-	//t_img_datas front;
-	t_img_datas back;
-	t_img_datas left;
-	t_img_datas right;
-}	t_player_imgs;
+	t_img_datas kunai_0;
+	t_img_datas kunai_1;
+	t_img_datas kunai_2;
+	t_img_datas kunai_3;
+	t_img_datas kunai_4;
+	t_img_datas kunai_5;
+	t_img_datas kunai_6;
+	t_img_datas kunai_7;
+	t_img_datas kunai_8;
+	t_img_datas kunai_9;
+	t_img_datas kunai_10;
+}	t_collect_imgs;
 
-typedef struct s_p_front
+typedef struct s_p_down
 {
-	t_img_datas	front;
-	t_img_datas front_0;
-	t_img_datas	front_1;
-	t_img_datas	front_2;
-	t_img_datas	front_3;
-}	t_p_front;
+	t_img_datas	down;
+	t_img_datas down_0;
+	t_img_datas	down_1;
+	t_img_datas	down_2;
+	t_img_datas	down_3;
+}	t_p_down;
 
 typedef struct s_p_right
 {
@@ -75,22 +80,17 @@ typedef struct s_p_left
 	t_img_datas left_5;
 }	t_p_left;
 
-//////////////////////////
-
-typedef struct s_collect_imgs
+typedef struct s_p_win
 {
-	t_img_datas kunai_0;
-	t_img_datas kunai_1;
-	t_img_datas kunai_2;
-	t_img_datas kunai_3;
-	t_img_datas kunai_4;
-	t_img_datas kunai_5;
-	t_img_datas kunai_6;
-	t_img_datas kunai_7;
-	t_img_datas kunai_8;
-	t_img_datas kunai_9;
-	t_img_datas kunai_10;
-}	t_collect_imgs;
+	t_img_datas win_0;
+	t_img_datas win_1;
+	t_img_datas win_2;
+	t_img_datas win_3;
+	t_img_datas win_4;
+	t_img_datas win_5;
+	t_img_datas win_6;
+	t_img_datas win_7;
+}	t_p_win;
 
 typedef struct s_player_pos
 {
@@ -102,6 +102,9 @@ typedef struct s_player_pos
 	int	down;
 	int left;
 	int right;
+	int is_moving;
+	int	won;
+	int lost;
 }	t_player_pos;
 
 typedef struct s_mlx_datas
@@ -118,15 +121,14 @@ typedef struct s_mlx_datas
 	t_img_datas		free_space;
 	t_img_datas		wall;
 	t_img_datas		collectible;
-	t_img_datas		player; // ?? DELETE ??
 	t_img_datas		exit;
 	t_map_datas		map_datas;
 	t_player_pos	play_pos;
-	t_player_imgs	play_imgs;
 	t_collect_imgs	collect_imgs;
-	t_p_front		p_down;
+	t_p_down		p_down;
 	t_p_right		p_right;
 	t_p_left		p_left;
+	t_p_win			p_win;
 }	t_mlx_datas;
 
 int		error_msg(void *ptr, char *msg);
@@ -147,8 +149,10 @@ void	move_up(t_mlx_datas *vars);
 void	move_down(t_mlx_datas *vars);
 void	move_left(t_mlx_datas *vars);
 void	move_right(t_mlx_datas *vars);
+void	win_animation(t_mlx_datas *vars);
 void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
+int init_p_win_imgs(t_mlx_datas *vars);
 
 
 /*
