@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:09:09 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:55:26 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_tmp(t_mlx_datas *vars)
 	vars->exit.y = 0;
 }
 
-void	put_animated_movements(t_mlx_datas*vars)
+void	put_animated_movements(t_mlx_datas *vars)
 {
 	if (vars->play_pos.down == 1)
 		move_down(vars);
@@ -56,7 +56,6 @@ int	render_next_frame(t_mlx_datas *vars)
 	}
 	if (i == 7500)
 	{
-		// put_free_space(vars);
 		put_collectible(vars);
 		i = 0;
 	}

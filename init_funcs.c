@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:02:36 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 21:11:43 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	init_img_datas_struct(t_mlx_datas *vars)
 	vars->wall.y = 0;
 	if (error_msg(vars->wall.img, "Image reading has failed.\n"))
 		return (-1);
+	if (init_anti_screentearing(vars) == -1)
+		return (-1);
 	if (init_collectible_img_struct(vars) == -1)
 		return (-1);
 	if (init_p_down_imgs(vars) == -1)
@@ -42,6 +44,7 @@ static int	init_img_datas_struct(t_mlx_datas *vars)
 		return (-1);
 	if (init_tobi_imgs(vars) == -1)
 		return (-1);
+
 	return (0);
 }
 

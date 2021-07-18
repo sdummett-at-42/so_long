@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:57:47 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:03:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 21:59:52 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,59 @@ int init_madara_imgs(t_mlx_datas *vars)
 	vars->madara.atk_2.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/m_atk_2.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->madara.atk_2.img, "Image reading has failed.\n"))
+		return (-1);
+	return (0);
+}
+
+int init_anti_screentearing(t_mlx_datas *vars)
+{
+	vars->anti_tearing.left16px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_16px_left.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.left16px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.left33px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_33px_left.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.left33px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.left50px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_50px_left.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.left50px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.right16px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_16px_right.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.right16px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.right33px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_33px_right.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.right33px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.right50px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_50px_right.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.right50px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.up16px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_16px_up.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.up16px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.up33px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_33px_up.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.up33px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.up50px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_50px_up.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.up50px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.down16px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_16px_down.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.down16px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.down33px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_33px_down.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.down33px.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->anti_tearing.down50px.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/ground_50px_down.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->anti_tearing.down50px.img, "Image reading has failed.\n"))
 		return (-1);
 	return (0);
 }

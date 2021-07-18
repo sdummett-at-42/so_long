@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:12:36 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 22:31:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,27 @@ void	move_down(t_mlx_datas *vars)
 		put_img(vars, vars->p_down.down_0.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height - 50);
+		put_img(vars, vars->anti_tearing.up16px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height - 66);
 	}
 	else if (i == 1)
 	{
 		put_img(vars, vars->p_down.down_1.img, \
 					vars->play_pos.x * vars->width, \
-					vars->play_pos.y * vars->height - 33);
+					vars->play_pos.y * vars->height - 34);
+		put_img(vars, vars->anti_tearing.up33px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height - 66);
 	}
 	else if (i == 2)
 	{
 		put_img(vars, vars->p_down.down_2.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height - 16);
+		put_img(vars, vars->anti_tearing.up50px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height - 66);
 	}
 	else if (i == 3)
 	{
@@ -70,18 +79,27 @@ void	move_up(t_mlx_datas *vars)
 		put_img(vars, vars->p_down.down_0.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 50);
+		put_img(vars, vars->anti_tearing.down16px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height + 66 + 50);
 	}
 	else if (i == 1)
 	{
 		put_img(vars, vars->p_down.down_1.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 33);
+		put_img(vars, vars->anti_tearing.down33px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height + 66 + 33);
 	}
 	else if (i == 2)
 	{
 		put_img(vars, vars->p_down.down_2.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height + 16);
+		put_img(vars, vars->anti_tearing.down50px.img, \
+			vars->play_pos.x * vars->width, \
+			vars->play_pos.y * vars->height + 66 + 16);
 	}
 	else if (i == 3)
 	{
@@ -106,18 +124,27 @@ void	move_left(t_mlx_datas *vars)
 		put_img(vars, vars->p_left.left_0.img, \
 					vars->play_pos.x * vars->width + 50, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.right16px.img, \
+			vars->play_pos.x * vars->width + 66 + 50, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 1)
 	{
 		put_img(vars, vars->p_left.left_1.img, \
 					vars->play_pos.x * vars->width + 33, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.right33px.img, \
+			vars->play_pos.x * vars->width + 66 + 33, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 2)
 	{
 		put_img(vars, vars->p_left.left_2.img, \
 					vars->play_pos.x * vars->width + 16, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.right50px.img, \
+			vars->play_pos.x * vars->width + 66 + 16, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 3)
 	{
@@ -145,18 +172,27 @@ void	move_right(t_mlx_datas *vars)
 		put_img(vars, vars->p_right.right_0.img, \
 					vars->play_pos.x * vars->width - 50, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.left16px.img, \
+			vars->play_pos.x * vars->width - 66, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 1)
 	{
 		put_img(vars, vars->p_right.right_1.img, \
 					vars->play_pos.x * vars->width - 33, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.left33px.img, \
+			vars->play_pos.x * vars->width -66, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 2)
 	{
 		put_img(vars, vars->p_right.right_2.img, \
 					vars->play_pos.x * vars->width - 16, \
 					vars->play_pos.y * vars->height);
+		put_img(vars, vars->anti_tearing.left50px.img, \
+			vars->play_pos.x * vars->width - 66, \
+			vars->play_pos.y * vars->height);
 	}
 	else if (i == 3)
 	{

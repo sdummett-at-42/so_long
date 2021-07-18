@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:06:59 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/18 21:08:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,23 @@ typedef struct s_p_lost
 	t_img_datas lost_2;
 }	t_p_lost;
 
+typedef struct s_anti_tearing
+{
+	t_img_datas left16px;
+	t_img_datas left33px;
+	t_img_datas	left50px;
+	t_img_datas right16px;
+	t_img_datas right33px;
+	t_img_datas	right50px;
+	t_img_datas up16px;
+	t_img_datas up33px;
+	t_img_datas	up50px;
+	t_img_datas down16px;
+	t_img_datas down33px;
+	t_img_datas	down50px;
+}	t_anti_tearing;
+
+
 typedef struct s_player_pos
 {
 	int	x;
@@ -156,6 +173,7 @@ typedef struct s_mlx_datas
 	t_p_lost		p_lost;
 	t_madara		madara;
 	t_tobi			tobi;
+	t_anti_tearing	anti_tearing;
 }	t_mlx_datas;
 
 int		error_msg(void *ptr, char *msg);
@@ -176,6 +194,7 @@ int 	init_p_win_imgs(t_mlx_datas *vars);
 int		init_p_lost_imgs(t_mlx_datas *vars);
 int		init_madara_imgs(t_mlx_datas *vars);
 int		init_tobi_imgs(t_mlx_datas *vars);
+int		init_anti_screentearing(t_mlx_datas *vars);
 void	move_up(t_mlx_datas *vars);
 void	move_down(t_mlx_datas *vars);
 void	move_left(t_mlx_datas *vars);
