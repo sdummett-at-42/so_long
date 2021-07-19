@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:23:23 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:26:15 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,26 @@ static void init_player_pos(t_mlx_datas *vars, int i, int j)
 				vars->play_pos.is_moving = 0;
 }
 
+void	init_map_ath(t_mlx_datas *vars)
+{
+	int i;
+
+	i = 1;
+	while (i * vars->width < vars->win_size_x)
+	{
+		if (i == 1)
+			put_img(vars, vars->ath.ath_0.img, 0, vars->moves.y);
+		else
+		{
+			put_img(vars, vars->ath.ath_1.img, i * vars->width, vars->moves.y);
+			if (i == 2)
+				mlx_string_put(vars->mlx, vars->win, vars->width, \
+					vars->moves.y + 37, 0xff8000, ft_itoa(vars->moves.count));
+		}
+		i++;
+	}
+}
+
 void	init_map(t_mlx_datas *vars)
 {
 	int	i;
@@ -93,4 +113,6 @@ void	init_map(t_mlx_datas *vars)
 		y = y + vars->width;
 		i++;
 	}
+	init_map_ath(vars);
 }
+

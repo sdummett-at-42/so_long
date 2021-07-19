@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:23:59 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 20:38:50 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:07:16 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 		{
 			vars->play_pos.x++;
 			vars->play_pos.right = 1;
-			vars->moves++;
+			vars->moves.count++;
+			vars->play_pos.look_right = 1;
 		}
 	}
 	if (keycode == 'a')
@@ -61,7 +62,8 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 		{
 			vars->play_pos.x--;
 			vars->play_pos.left = 1;
-			vars->moves++;
+			vars->moves.count++;
+			vars->play_pos.look_right = 0;
 		}
 	}
 	if (keycode == 's')
@@ -70,7 +72,7 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 		{
 			vars->play_pos.y++;
 			vars->play_pos.down = 1;
-			vars->moves++;
+			vars->moves.count++;
 		}
 	}
 	if (keycode == 'w')
@@ -79,9 +81,8 @@ int mov_key_hook(int keycode, t_mlx_datas *vars)
 		{
 			vars->play_pos.y--;
 			vars->play_pos.up = 1;
-			vars->moves++;
+			vars->moves.count++;
 		}
 	}
-	printf("moves : %d\n", vars->moves); // /!\ PRINTF !
 	return (0);
 }

@@ -6,12 +6,17 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 21:08:48 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:15:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+/*
+** # include <X11/keysym.h>
+** # include <X11/X.h>
+*/
 
 # include "minilibx-linux/mlx.h"
 # include "gnl/get_next_line.h"
@@ -49,13 +54,17 @@ typedef struct s_collect_imgs
 	t_img_datas kunai_10;
 }	t_collect_imgs;
 
-typedef struct s_p_down
+typedef struct s_p_up_down
 {
 	t_img_datas	down;
 	t_img_datas down_0;
 	t_img_datas	down_1;
 	t_img_datas	down_2;
 	t_img_datas	down_3;
+	t_img_datas down_left_0;
+	t_img_datas	down_left_1;
+	t_img_datas	down_left_2;
+	t_img_datas	down_left_3;
 }	t_p_down;
 
 typedef struct s_p_right
@@ -116,6 +125,12 @@ typedef struct s_p_lost
 	t_img_datas lost_2;
 }	t_p_lost;
 
+typedef struct s_ath
+{
+	t_img_datas ath_0;
+	t_img_datas	ath_1;
+	t_img_datas	ath_2;
+}	t_ath;
 typedef struct s_anti_tearing
 {
 	t_img_datas left16px;
@@ -132,8 +147,7 @@ typedef struct s_anti_tearing
 	t_img_datas	down50px;
 }	t_anti_tearing;
 
-
-typedef struct s_player_pos
+typedef struct s_player_infos
 {
 	int	x;
 	int	y;
@@ -143,10 +157,18 @@ typedef struct s_player_pos
 	int	down;
 	int left;
 	int right;
+	int	look_right;
 	int is_moving;
 	int	won;
 	int lost;
-}	t_player_pos;
+}	t_player_infos;
+
+typedef struct s_move_count
+{
+	int	count;
+	int x;
+	int y;
+}	t_move_count;
 
 typedef struct s_mlx_datas
 {
@@ -157,14 +179,12 @@ typedef struct s_mlx_datas
 	int				height;
 	int				win_size_x;
 	int				win_size_y;
-	int				moves;
 	int				tmp_free_space;
+	t_move_count	moves;
+	t_player_infos	play_pos;
 	t_img_datas		free_space;
 	t_img_datas		wall;
-	t_img_datas		collectible;
-	t_img_datas		exit;
 	t_map_datas		map_datas;
-	t_player_pos	play_pos;
 	t_collect_imgs	collect_imgs;
 	t_p_down		p_down;
 	t_p_right		p_right;
@@ -173,6 +193,7 @@ typedef struct s_mlx_datas
 	t_p_lost		p_lost;
 	t_madara		madara;
 	t_tobi			tobi;
+	t_ath			ath;
 	t_anti_tearing	anti_tearing;
 }	t_mlx_datas;
 
@@ -187,16 +208,22 @@ void	ft_putstr(char *str);
 void	init_map(t_mlx_datas *vars);
 void	put_img(t_mlx_datas *vars, void*img, int x, int y);
 int		init_collectible_img_struct(t_mlx_datas *vars);
-int		init_p_down_imgs(t_mlx_datas*vars);
+int		init_ground_imgs(t_mlx_datas *vars);
+int		init_wall_imgs(t_mlx_datas *vars);
+int		init_p_up_down_right_imgs(t_mlx_datas*vars);
+int		init_p_up_down_left_imgs(t_mlx_datas*vars);
 int		init_p_right_imgs(t_mlx_datas *vars);
 int		init_p_left_imgs(t_mlx_datas *vars);
 int 	init_p_win_imgs(t_mlx_datas *vars);
 int		init_p_lost_imgs(t_mlx_datas *vars);
 int		init_madara_imgs(t_mlx_datas *vars);
 int		init_tobi_imgs(t_mlx_datas *vars);
+int		init_ath(t_mlx_datas *vars);
 int		init_anti_screentearing(t_mlx_datas *vars);
-void	move_up(t_mlx_datas *vars);
-void	move_down(t_mlx_datas *vars);
+void	move_up_right(t_mlx_datas *vars);
+void	move_up_left(t_mlx_datas *vars);
+void	move_down_right(t_mlx_datas *vars);
+void	move_down_left(t_mlx_datas *vars);
 void	move_left(t_mlx_datas *vars);
 void	move_right(t_mlx_datas *vars);
 void	win_animation(t_mlx_datas *vars);
@@ -205,8 +232,7 @@ void	madara_atk_animation(t_mlx_datas *vars);
 void	tobi_tp_animation(t_mlx_datas *vars);
 void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
-
-
+char	*ft_itoa(int n);
 
 /*
 ** DEBUGGING FUNCS
