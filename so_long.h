@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:41:13 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 01:38:21 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,8 @@ typedef struct s_mlx_datas
 }	t_mlx_datas;
 
 int		error_msg(void *ptr, char *msg);
-int		close_win(int keycode, t_mlx_datas *vars);
+int		close_win(int keysym, t_mlx_datas *vars);
+int		close_win_cross(t_mlx_datas *vars);
 int		init_mlx_datas_struct(t_mlx_datas *vars);
 void	init_map(t_mlx_datas *vars);
 void	init_map_datas_struct(t_map_datas *map);

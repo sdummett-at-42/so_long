@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:37:10 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 01:41:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,17 @@ int	error_msg(void *ptr, char *msg)
 	return (0);
 }
 
-int	close_win(int keycode, t_mlx_datas *vars)
+int	close_win_cross(t_mlx_datas *vars)
 {
-	if (keycode == 65307)
+	mlx_loop_end (vars->mlx);
+	return (0);
+}
+int	close_win(int keysym, t_mlx_datas *vars)
+{
+	if (keysym == 65307)
 	{
 		ft_putstr("Window closed.\n");
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_loop_end (vars->mlx);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:36:53 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 01:41:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	render_next_frame(t_mlx_datas *vars)
 	return (0);
 }
 
+
+
 int	main(int ac, char **av)
 {
 	t_mlx_datas	vars;
@@ -77,11 +79,13 @@ int	main(int ac, char **av)
 	if (init_mlx_datas_struct(&vars) == -1)
 		return (-1);
 	mlx_key_hook(vars.win, mov_key_hook, &vars);
-	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars); // utiliser close_win dans mlx_key_hook ???
-	init_map(&vars); // Add close window with cross
+	init_map(&vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars);
+	mlx_hook(vars.win, 17, 1L << 0, close_win_cross, &vars);
 	mlx_loop(vars.mlx);
 	free_all_vars(&vars);
+	mlx_destroy_window(vars.mlx, vars.win);
 	mlx_destroy_display(vars.mlx);
 	free(vars.mlx);
 	//exit(1);

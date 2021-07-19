@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:36:28 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 01:43:33 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	put_ath(t_mlx_datas *vars)
 	put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
 	mlx_string_put(vars->mlx, vars->win, vars->width, \
 		vars->moves.y + 37, 0xff8000, str);
+	printf("Moves -> %d.\n", vars->moves.count);
 	free(str);
 }
 
@@ -389,7 +390,7 @@ void	lost_animation(t_mlx_datas *vars)
 		put_img(vars, vars->p_lost.lost_2.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_loop_end (vars->mlx);
 	}
 	i++;
 }
@@ -433,7 +434,7 @@ void	tobi_tp_animation(t_mlx_datas *vars)
 		put_img(vars, vars->tobi.exit_2.img, \
 					vars->play_pos.last_x * vars->width, \
 					vars->play_pos.last_y * vars->height);
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_loop_end (vars->mlx);
 	}
 	i++;
 }
