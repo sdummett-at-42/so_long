@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:19:57 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:47:31 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,12 +165,7 @@ void	move_up_right(t_mlx_datas *vars)
 		put_img(vars, vars->p_down.down_3.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
-		if (vars->play_pos.look_right == 1)
-			put_img(vars, vars->p_right.right.img, \
-					vars->play_pos.x * vars->width, \
-					vars->play_pos.y * vars->height);
-		else
-			put_img(vars, vars->p_left.left.img, \
+		put_img(vars, vars->p_right.right.img, \
 					vars->play_pos.x * vars->width, \
 					vars->play_pos.y * vars->height);
 		vars->play_pos.up = 0;

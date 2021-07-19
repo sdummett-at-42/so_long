@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:26:15 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:48:56 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_put_collectible(t_mlx_datas *vars, int x, int y)
 
 void	init_put_player(t_mlx_datas *vars, int x, int y)
 {
-	put_img(vars, vars->p_down.down.img, x, y);
+	put_img(vars, vars->p_right.right.img, x, y);
 }
 
 void	init_put_free_space(t_mlx_datas *vars, int x, int y)

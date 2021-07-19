@@ -6,7 +6,7 @@
 #    By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 12:50:30 by sdummett          #+#    #+#              #
-#    Updated: 2021/07/19 18:51:37 by sdummett         ###   ########.fr        #
+#    Updated: 2021/07/19 22:31:53 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRC		= so_long.c \
 			animated_collectibles.c \
 			key_hooks.c \
 			ft_itoa.c \
+			init_all_vars.c \
+			free_funcs.c \
 			debugging_funcs.c
 OBJ		= $(SRC:.c=.o)
 

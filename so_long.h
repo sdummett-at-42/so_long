@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:15:18 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 22:18:13 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ char	**map_parser(t_map_datas *map_datas, char *file);
 void	ft_putstr(char *str);
 void	init_map(t_mlx_datas *vars);
 void	put_img(t_mlx_datas *vars, void*img, int x, int y);
+void	init_all_vars(t_mlx_datas *vars);
 int		init_collectible_img_struct(t_mlx_datas *vars);
 int		init_ground_imgs(t_mlx_datas *vars);
 int		init_wall_imgs(t_mlx_datas *vars);
@@ -233,6 +234,7 @@ void	tobi_tp_animation(t_mlx_datas *vars);
 void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
 char	*ft_itoa(int n);
+void	free_all_vars(t_mlx_datas *vars);
 
 /*
 ** DEBUGGING FUNCS

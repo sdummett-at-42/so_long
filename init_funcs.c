@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:15:00 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 22:10:40 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	init_window(t_mlx_datas *vars)
 
 int	init_mlx_datas_struct(t_mlx_datas *vars)
 {
-	// init_all_variables(vars);
+	init_all_vars(vars);
 	vars->mlx = mlx_init();
 	if (error_msg(vars->mlx, "mlx_init has failed.\n"))
 		return (-1);

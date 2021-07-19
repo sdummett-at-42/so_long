@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:57:47 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:14:54 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:51:11 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int init_p_up_down_right_imgs(t_mlx_datas *vars)
 {
-	vars->p_down.down.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/p_stand_left.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->p_down.down.img, "Image reading has failed.\n"))
-		return (-1); // <- DELETE THIS IMAGE
 	vars->p_down.down_0.img= mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_0.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_0.img, "Image reading has failed.\n"))
