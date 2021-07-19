@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parser.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/19 23:56:55 by sdummett          #+#    #+#             */
+/*   Updated: 2021/07/20 00:03:05 by sdummett         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	get_line_number(char *file)
@@ -16,7 +28,10 @@ int	get_line_number(char *file)
 	while (ret != 0)
 	{
 		if (ret == -1)
+		{
+			free(tmp);
 			return (-1);
+		}
 		ret = get_next_line(fd, &tmp);
 		free(tmp);
 		size++;
@@ -39,7 +54,7 @@ int	fill_map(char *file, char **map)
 	while (ret != 0)
 	{
 		if (ret == -1)
-			return (-1);
+			return (free_map_buffer(map));
 		ret = get_next_line(fd, &map[i]);
 		i++;
 	}
@@ -195,7 +210,7 @@ char	**map_parser(t_map_datas *map_datas, char *file)
 		ft_putstr("Error: Invalid map. (map_datas->height < 3)\n");
 		return (NULL);
 	}
-	map = malloc(sizeof(char *) * map_datas->height + 1);
+	map = malloc(sizeof(char *) * (map_datas->height + 1));
 	if (error_msg(map, "Memory allocation has failed.\n"))
 		return (NULL);
 	if (fill_map(file, map) == -1)

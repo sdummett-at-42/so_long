@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 22:18:13 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 23:53:21 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,7 @@ void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
 char	*ft_itoa(int n);
 void	free_all_vars(t_mlx_datas *vars);
+int		free_map_buffer(char **map);
 
 /*
 ** DEBUGGING FUNCS
