@@ -12,11 +12,13 @@ int	get_line_number(char *file)
 		return (-1);
 	size = 1;
 	ret = get_next_line(fd, &tmp);
+	free(tmp);
 	while (ret != 0)
 	{
 		if (ret == -1)
 			return (-1);
 		ret = get_next_line(fd, &tmp);
+		free(tmp);
 		size++;
 	}
 	close(fd);

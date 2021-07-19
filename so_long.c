@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 22:19:09 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 23:15:43 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	main(int ac, char **av)
 	t_map_datas	map_datas;
 	char		**map;
 
+	map = NULL;
 	if (check_params(ac, av) == -1)
 		return (-1);
 	map = map_parser(&map_datas, av[1]);

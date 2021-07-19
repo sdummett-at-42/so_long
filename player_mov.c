@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:47:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 23:18:44 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	put_ath(t_mlx_datas *vars)
 {
+	char *str;
+	
+	str = ft_itoa(vars->moves.count);
 	put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
 	mlx_string_put(vars->mlx, vars->win, vars->width, \
-		vars->moves.y + 37, 0xff8000, \
-		ft_itoa(vars->moves.count));
-
+		vars->moves.y + 37, 0xff8000, str);
+	free(str);
 }
 
 void	put_free_space(t_mlx_datas *vars)

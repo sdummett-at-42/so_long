@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 21:54:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 22:06:06 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 23:30:04 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,15 @@ void	init_all_vars(t_mlx_datas *vars)
 	vars->ath.ath_0.img = NULL;
 	vars->ath.ath_1.img = NULL;
 	vars->ath.ath_2.img = NULL;
+	vars->collect_imgs.kunai_0.img = NULL;
+	vars->collect_imgs.kunai_1.img = NULL;
+	vars->collect_imgs.kunai_2.img = NULL;
+	vars->collect_imgs.kunai_3.img = NULL;
+	vars->collect_imgs.kunai_4.img = NULL;
+	vars->collect_imgs.kunai_5.img = NULL;
+	vars->collect_imgs.kunai_6.img = NULL;
+	vars->collect_imgs.kunai_7.img = NULL;
+	vars->collect_imgs.kunai_8.img = NULL;
+	vars->collect_imgs.kunai_9.img = NULL;
+	vars->collect_imgs.kunai_10.img = NULL;
 }
