@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:26:26 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/19 21:34:30 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	put_animated_movements(t_mlx_datas *vars)
 {
 	if (vars->play_pos.down == 1)
 	{
-		// if (vars->play_pos.look_right == 1)
+		if (vars->play_pos.look_right == 1)
 			move_down_right(vars);
-		// else
-			// move_down_left(vars);
+		else
+			move_down_left(vars);
 	}
 	if (vars->play_pos.up == 1)
 	{
-		// if (vars->play_pos.look_right == 1)
+		if (vars->play_pos.look_right == 1)
 			move_up_right(vars);
-		// else
-			// move_up_left(vars);
+		else
+			move_up_left(vars);
 	}
 	if (vars->play_pos.left == 1)
 		move_left(vars);
