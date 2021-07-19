@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 21:53:12 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 23:52:11 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:34:25 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	free_map_buffer(char **map)
 {
+	int	i;
+
+	i = 0;
 	if (map != NULL)
 	{
-		int i;
-
-		i = 0;
 		while (map[i] != NULL)
 		{
 			free(map[i]);
@@ -29,7 +29,7 @@ int	free_map_buffer(char **map)
 	return (-1);
 }
 
-void free_all_vars(t_mlx_datas *vars)
+void	free_all_vars(t_mlx_datas *vars)
 {
 	free_map_buffer(vars->map);
 	mlx_destroy_image(vars->mlx, vars->p_down.down_0.img);
@@ -101,6 +101,4 @@ void free_all_vars(t_mlx_datas *vars)
 	mlx_destroy_image(vars->mlx, vars->collect_imgs.kunai_8.img);
 	mlx_destroy_image(vars->mlx, vars->collect_imgs.kunai_9.img);
 	mlx_destroy_image(vars->mlx, vars->collect_imgs.kunai_10.img);
-	
-
 }

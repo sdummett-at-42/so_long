@@ -6,55 +6,55 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 12:57:47 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 21:51:11 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:38:28 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int init_p_up_down_right_imgs(t_mlx_datas *vars)
+int	init_p_up_down_right_imgs(t_mlx_datas *vars)
 {
-	vars->p_down.down_0.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_0.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_0.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_1.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_1.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_1.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_1.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_2.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_2.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_2.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_2.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_3.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_3.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_3.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_3.img, "Image reading has failed.\n"))
 		return (-1);
 	return (0);
 }
 
-int init_p_up_down_left_imgs(t_mlx_datas *vars)
+int	init_p_up_down_left_imgs(t_mlx_datas *vars)
 {
-	vars->p_down.down_left_0.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_left_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_left_0.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_left_0.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_left_1.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_left_1.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_left_1.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_left_1.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_left_2.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_left_2.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_left_2.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_left_2.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->p_down.down_left_3.img= mlx_xpm_file_to_image(vars->mlx, \
+	vars->p_down.down_left_3.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_mov_up_left_3.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->p_down.down_left_3.img, "Image reading has failed.\n"))
 		return (-1);
 	return (0);
 }
 
-int init_p_right_imgs(t_mlx_datas *vars)
+int	init_p_right_imgs(t_mlx_datas *vars)
 {
 	vars->p_right.right.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_stand_right.xpm", &vars->width, &vars->height);
@@ -87,7 +87,7 @@ int init_p_right_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_p_left_imgs(t_mlx_datas *vars)
+int	init_p_left_imgs(t_mlx_datas *vars)
 {
 	vars->p_left.left.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_stand_left.xpm", &vars->width, &vars->height);
@@ -120,7 +120,7 @@ int init_p_left_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_p_win_imgs(t_mlx_datas *vars)
+int	init_p_win_imgs(t_mlx_datas *vars)
 {
 	vars->p_win.win_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_win_0.xpm", &vars->width, &vars->height);
@@ -157,7 +157,7 @@ int init_p_win_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_p_lost_imgs(t_mlx_datas *vars)
+int	init_p_lost_imgs(t_mlx_datas *vars)
 {
 	vars->p_lost.lost_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/p_lost_0.xpm", &vars->width, &vars->height);
@@ -174,7 +174,7 @@ int init_p_lost_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_tobi_imgs(t_mlx_datas *vars)
+int	init_tobi_imgs(t_mlx_datas *vars)
 {
 	vars->tobi.stand.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/tobi.xpm", &vars->width, &vars->height);
@@ -195,7 +195,7 @@ int init_tobi_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_madara_imgs(t_mlx_datas *vars)
+int	init_madara_imgs(t_mlx_datas *vars)
 {
 	vars->madara.stand.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/m_stand.xpm", &vars->width, &vars->height);
@@ -216,7 +216,7 @@ int init_madara_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_anti_screentearing(t_mlx_datas *vars)
+int	init_anti_screentearing(t_mlx_datas *vars)
 {
 	vars->anti_tearing.left16px.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/ground_16px_left.xpm", &vars->width, &vars->height);
@@ -269,7 +269,7 @@ int init_anti_screentearing(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_ground_imgs(t_mlx_datas *vars)
+int	init_ground_imgs(t_mlx_datas *vars)
 {
 	vars->free_space.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/ground.xpm", &vars->width, &vars->height);
@@ -278,7 +278,7 @@ int init_ground_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_wall_imgs(t_mlx_datas *vars)
+int	init_wall_imgs(t_mlx_datas *vars)
 {
 	vars->wall.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/rock.xpm", &vars->width, &vars->height);
@@ -287,7 +287,7 @@ int init_wall_imgs(t_mlx_datas *vars)
 	return (0);
 }
 
-int init_ath(t_mlx_datas * vars)
+int	init_ath(t_mlx_datas *vars)
 {
 	vars->ath.ath_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/mugshot_right.xpm", &vars->width, &vars->height);

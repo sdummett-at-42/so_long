@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:19:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 16:53:56 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:18:58 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	animate_collect(t_mlx_datas *vars, int img, int x, int y)
 
 void	put_collectible(t_mlx_datas *vars)
 {
-	static int i = 0;
-	int x; 
-	int y;
+	static int	i = 0;
+	int			x;
+	int			y;
 
 	y = 0;
 	while (vars->map[y] != NULL)

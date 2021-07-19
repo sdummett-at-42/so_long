@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 23:15:43 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:36:53 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	put_animated_movements(t_mlx_datas *vars)
 
 int	render_next_frame(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	i++;
 	if (i == 1500)
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 		return (-1);
 	mlx_key_hook(vars.win, mov_key_hook, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars); // utiliser close_win dans mlx_key_hook ???
-	init_map(&vars);
+	init_map(&vars); // Add close window with cross
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_loop(vars.mlx);
 	free_all_vars(&vars);
@@ -86,5 +86,4 @@ int	main(int ac, char **av)
 	free(vars.mlx);
 	//exit(1);
 	return (0);
-
 }

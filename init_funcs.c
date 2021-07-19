@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 22:10:40 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:25:28 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	init_img_datas_struct(t_mlx_datas *vars)
 	if (init_p_right_imgs(vars) == -1)
 		return (-1);
 	if (init_p_left_imgs(vars) == -1)
-		return(-1);
+		return (-1);
 	if (init_p_win_imgs(vars) == -1)
 		return (-1);
 	if (init_p_lost_imgs(vars) == -1)

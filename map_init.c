@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:42:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 23:20:05 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:35:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,26 @@ void	init_put_madara(t_mlx_datas *vars, int x, int y)
 	put_img(vars, vars->madara.stand.img, x, y);
 }
 
-static void init_player_pos(t_mlx_datas *vars, int i, int j)
+static void	init_player_pos(t_mlx_datas *vars, int i, int j)
 {
-				vars->play_pos.x = j;
-				vars->play_pos.y = i;
-				vars->play_pos.last_x = j;
-				vars->play_pos.last_y = i;
-				vars->play_pos.up = 0;
-				vars->play_pos.down = 0;
-				vars->play_pos.left = 0;
-				vars->play_pos.right= 0;
-				vars->play_pos.won = 0;
-				vars->play_pos.lost = 0;
-				vars->play_pos.is_moving = 0;
+	vars->play_pos.x = j;
+	vars->play_pos.y = i;
+	vars->play_pos.last_x = j;
+	vars->play_pos.last_y = i;
+	vars->play_pos.up = 0;
+	vars->play_pos.down = 0;
+	vars->play_pos.left = 0;
+	vars->play_pos.right = 0;
+	vars->play_pos.won = 0;
+	vars->play_pos.lost = 0;
+	vars->play_pos.is_moving = 0;
 }
 
 void	init_map_ath(t_mlx_datas *vars)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
+
 	i = 1;
 	while (i * vars->width < vars->win_size_x)
 	{
@@ -119,4 +120,3 @@ void	init_map(t_mlx_datas *vars)
 	}
 	init_map_ath(vars);
 }
-

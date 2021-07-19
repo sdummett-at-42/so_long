@@ -6,13 +6,13 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:07:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:08:22 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:19:30 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int init_collectible_img_struct(t_mlx_datas *vars)
+int	init_collectible_img_struct(t_mlx_datas *vars)
 {
 	vars->collect_imgs.kunai_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/kunai_0.xpm", &vars->width, &vars->height);

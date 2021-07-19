@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 23:56:55 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:03:05 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:28:17 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	check_walls(char **map, int size)
 	return (width);
 }
 
-int is_madara(char c)
+int	is_madara(char c)
 {
 	if (c == 'M')
 		return (1);

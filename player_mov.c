@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:12:38 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/19 23:18:44 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:36:28 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	put_ath(t_mlx_datas *vars)
 {
-	char *str;
-	
+	char	*str;
+
 	str = ft_itoa(vars->moves.count);
 	put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
 	mlx_string_put(vars->mlx, vars->win, vars->width, \
@@ -38,7 +38,7 @@ void	put_free_space(t_mlx_datas *vars)
 
 void	move_down_right(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0 )
 	{
@@ -84,7 +84,7 @@ void	move_down_right(t_mlx_datas *vars)
 
 void	move_down_left(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0 )
 	{
@@ -133,7 +133,7 @@ void	move_down_left(t_mlx_datas *vars)
 
 void	move_up_right(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0 )
 	{
@@ -182,7 +182,7 @@ void	move_up_right(t_mlx_datas *vars)
 
 void	move_up_left(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0 )
 	{
@@ -231,7 +231,7 @@ void	move_up_left(t_mlx_datas *vars)
 
 void	move_left(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0 )
 	{
@@ -280,7 +280,7 @@ void	move_left(t_mlx_datas *vars)
 
 void	move_right(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0)
 	{
@@ -297,7 +297,7 @@ void	move_right(t_mlx_datas *vars)
 					vars->play_pos.x * vars->width - 33, \
 					vars->play_pos.y * vars->height);
 		put_img(vars, vars->anti_tearing.left33px.img, \
-			vars->play_pos.x * vars->width -66, \
+			vars->play_pos.x * vars->width - 66, \
 			vars->play_pos.y * vars->height);
 	}
 	else if (i == 2)
@@ -327,9 +327,9 @@ void	move_right(t_mlx_datas *vars)
 		i = 0;
 }
 
-void win_animation(t_mlx_datas *vars)
+void	win_animation(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0)
 		put_img(vars, vars->p_win.win_0.img, \
@@ -372,9 +372,9 @@ void win_animation(t_mlx_datas *vars)
 	i++;
 }
 
-void lost_animation(t_mlx_datas *vars)
+void	lost_animation(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0)
 		put_img(vars, vars->p_lost.lost_0.img, \
@@ -396,7 +396,7 @@ void lost_animation(t_mlx_datas *vars)
 
 void	madara_atk_animation(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0)
 		put_img(vars, vars->madara.atk_0.img, \
@@ -418,7 +418,7 @@ void	madara_atk_animation(t_mlx_datas *vars)
 
 void	tobi_tp_animation(t_mlx_datas *vars)
 {
-	static int i = 0;
+	static int	i = 0;
 
 	if (i == 0)
 		put_img(vars, vars->tobi.exit_0.img, \

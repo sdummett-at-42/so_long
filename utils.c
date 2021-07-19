@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/18 13:22:19 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 00:37:10 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_putstr(char *str)
 ** put_img is less verbose than mlx_put_image_to_window.
 */
 
-void put_img(t_mlx_datas *vars, void *img, int x, int y)
+void	put_img(t_mlx_datas *vars, void *img, int x, int y)
 {
 	mlx_put_image_to_window(vars->mlx, vars->win, img, x, y);
 }
