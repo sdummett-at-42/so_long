@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 19:30:09 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 23:22:20 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,6 @@ static void	clean_all(t_mlx_datas *vars)
 	free(vars->mlx);
 }
 
-/*
-** Use exit(1); ???
-*/
-
 int	main(int ac, char **av)
 {
 	t_mlx_datas	vars;
@@ -83,7 +79,7 @@ int	main(int ac, char **av)
 	if (check_params(ac, av) == -1)
 		return (-1);
 	map = map_parser(&map_datas, av[1]);
-	if (error_msg(map, "Invalid map.\n"))
+	if (error_msg(map, "Error\nInvalid map.\n"))
 		return (-1);
 	vars.map_datas = map_datas;
 	vars.map = map;

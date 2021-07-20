@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 22:18:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 23:13:06 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,7 @@ typedef struct s_mlx_datas
 /*
 ** Map parsing
 */
+
 int		is_madara(char c);
 int		is_player(char c);
 int		is_collectible(char c);
