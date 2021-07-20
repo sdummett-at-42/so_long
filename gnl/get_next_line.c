@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 12:02:53 by sdummett          #+#    #+#             */
-/*   Updated: 2021/06/08 15:12:00 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 05:49:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int	buffer_handler(char **buffer, char **line, int fd, int eof)
 			break ;
 		eof = 0;
 	}
-	*buffer = save_buffer(*buffer, ft_strchr_or_memset(*buffer, '\n', 0, 1) + 1);
+	*buffer = save_buffer(*buffer, ft_strchr_or_memset(*buffer, \
+	'\n', 0, 1) + 1);
 	if (line)
 		return (1);
 	return (0);

@@ -6,13 +6,39 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:07:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:19:30 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 01:59:49 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	init_collectible_img_struct(t_mlx_datas *vars)
+static int	init_collectible_imgs_2(t_mlx_datas *vars)
+{
+	vars->collect_imgs.kunai_6.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/kunai_6.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->collect_imgs.kunai_6.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->collect_imgs.kunai_7.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/kunai_7.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->collect_imgs.kunai_7.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->collect_imgs.kunai_8.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/kunai_8.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->collect_imgs.kunai_8.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->collect_imgs.kunai_9.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/kunai_9.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->collect_imgs.kunai_9.img, "Image reading has failed.\n"))
+		return (-1);
+	vars->collect_imgs.kunai_10.img = mlx_xpm_file_to_image(vars->mlx, \
+	"sprites/kunai_10.xpm", &vars->width, &vars->height);
+	if (error_msg(vars->collect_imgs.kunai_10.img, "Image reading has \
+	failed.\n"))
+		return (-1);
+	return (0);
+}
+
+int	init_collectible_imgs(t_mlx_datas *vars)
 {
 	vars->collect_imgs.kunai_0.img = mlx_xpm_file_to_image(vars->mlx, \
 	"sprites/kunai_0.xpm", &vars->width, &vars->height);
@@ -38,25 +64,5 @@ int	init_collectible_img_struct(t_mlx_datas *vars)
 	"sprites/kunai_5.xpm", &vars->width, &vars->height);
 	if (error_msg(vars->collect_imgs.kunai_5.img, "Image reading has failed.\n"))
 		return (-1);
-	vars->collect_imgs.kunai_6.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/kunai_6.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->collect_imgs.kunai_6.img, "Image reading has failed.\n"))
-		return (-1);
-	vars->collect_imgs.kunai_7.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/kunai_7.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->collect_imgs.kunai_7.img, "Image reading has failed.\n"))
-		return (-1);
-	vars->collect_imgs.kunai_8.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/kunai_8.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->collect_imgs.kunai_8.img, "Image reading has failed.\n"))
-		return (-1);
-	vars->collect_imgs.kunai_9.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/kunai_9.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->collect_imgs.kunai_9.img, "Image reading has failed.\n"))
-		return (-1);
-	vars->collect_imgs.kunai_10.img = mlx_xpm_file_to_image(vars->mlx, \
-	"sprites/kunai_10.xpm", &vars->width, &vars->height);
-	if (error_msg(vars->collect_imgs.kunai_10.img, "Image reading has failed.\n"))
-		return (-1);
-	return (0);
+	return (init_collectible_imgs_2(vars));
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:54:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 01:41:57 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 05:40:00 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,20 @@ void	put_img(t_mlx_datas *vars, void *img, int x, int y)
 ** Check the extension of the file given. (*.ber)
 */
 
-static int	check_extension(char *file)
+static int	check_extension_2(int check, char c)
+{
+	if (check == 0 && c == 'r')
+		return (1);
+	else if (check == 1 && c == 'e')
+		return (1);
+	else if (check == 2 && c == 'b')
+		return (1);
+	else if (check == 3 && c == '.')
+		return (1);
+	return (-1);
+}
+
+int	check_extension(char *file)
 {
 	int	i;
 	int	check;
@@ -58,13 +71,7 @@ static int	check_extension(char *file)
 	check = 0;
 	while (i != 0 && check != 4)
 	{
-		if (check == 0 && file[i] == 'r')
-			i--;
-		else if (check == 1 && file [i] == 'e')
-			i--;
-		else if (check == 2 && file[i] == 'b')
-			i--;
-		else if (check == 3 && file[i] == '.')
+		if (check_extension_2(check, file[i]) == 1)
 			i--;
 		else
 			return (-1);
@@ -72,61 +79,5 @@ static int	check_extension(char *file)
 	}
 	if (check != 4)
 		return (-1);
-	return (0);
-}
-
-/*
-** 	Check if the arg is valid.
-*/
-
-int	check_params(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		ft_putstr("Please give a map with a .ber extension.\n");
-		return (-1);
-	}
-	else if (ac > 2)
-	{
-		ft_putstr("Please give only one argument.\n");
-		return (-1);
-	}
-	else
-	{
-		if (check_extension(av[1]) == -1)
-		{
-			ft_putstr("Please give a file with the right extension (.ber).\n");
-			return (-1);
-		}
-	}
-	return (0);
-}
-
-/*
-** Check if the ptr is NULL and print an error message if it is.
-*/
-
-int	error_msg(void *ptr, char *msg)
-{
-	if (ptr == NULL)
-	{
-		ft_putstr(msg);
-		return (1);
-	}
-	return (0);
-}
-
-int	close_win_cross(t_mlx_datas *vars)
-{
-	mlx_loop_end (vars->mlx);
-	return (0);
-}
-int	close_win(int keysym, t_mlx_datas *vars)
-{
-	if (keysym == 65307)
-	{
-		ft_putstr("Window closed.\n");
-		mlx_loop_end (vars->mlx);
-	}
 	return (0);
 }

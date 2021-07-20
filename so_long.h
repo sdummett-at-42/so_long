@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 01:38:21 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 05:47:56 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,26 @@ typedef struct s_mlx_datas
 	t_madara		madara;
 	t_tobi			tobi;
 	t_ath			ath;
-	t_anti_tearing	anti_tearing;
+	t_anti_tearing	tearing;
 }	t_mlx_datas;
+
+/*
+** Map parsing
+*/
+int		is_madara(char c);
+int		is_player(char c);
+int		is_collectible(char c);
+int		is_exit(char c);
+int		is_wall(char c);
+int		is_free_space(char c);
+int		is_valid_map(char **map, t_map_datas *map_datas);
+int		fill_map(char *file, char **map);
+int		get_line_number(char *file);
+int		check_walls(char **map, int size);
+
+/*
+**
+*/
 
 int		error_msg(void *ptr, char *msg);
 int		close_win(int keysym, t_mlx_datas *vars);
@@ -204,12 +222,24 @@ int		init_mlx_datas_struct(t_mlx_datas *vars);
 void	init_map(t_mlx_datas *vars);
 void	init_map_datas_struct(t_map_datas *map);
 int		check_params(int ac, char **av);
+int		check_extension(char *file);
 char	**map_parser(t_map_datas *map_datas, char *file);
 void	ft_putstr(char *str);
 void	init_map(t_mlx_datas *vars);
 void	put_img(t_mlx_datas *vars, void*img, int x, int y);
+
+/*
+** Initialization functions
+*/
+
+void	init_put_madara(t_mlx_datas *vars, int x, int y);
+void	init_put_wall(t_mlx_datas *vars, int x, int y);
+void	init_put_free_space(t_mlx_datas *vars, int x, int y);
+void	init_put_player(t_mlx_datas *vars, int x, int y);
+void	init_put_collectible(t_mlx_datas *vars, int x, int y);
+void	init_put_exit(t_mlx_datas *vars, int x, int y);
 void	init_all_vars(t_mlx_datas *vars);
-int		init_collectible_img_struct(t_mlx_datas *vars);
+int		init_collectible_imgs(t_mlx_datas *vars);
 int		init_ground_imgs(t_mlx_datas *vars);
 int		init_wall_imgs(t_mlx_datas *vars);
 int		init_p_up_down_right_imgs(t_mlx_datas*vars);
@@ -221,7 +251,16 @@ int		init_p_lost_imgs(t_mlx_datas *vars);
 int		init_madara_imgs(t_mlx_datas *vars);
 int		init_tobi_imgs(t_mlx_datas *vars);
 int		init_ath(t_mlx_datas *vars);
+void	init_map_ath(t_mlx_datas *vars);
 int		init_anti_screentearing(t_mlx_datas *vars);
+
+/*
+** Animation related functions
+*/
+
+void	put_ath(t_mlx_datas *vars);
+void	put_free_space(t_mlx_datas *vars);
+int		player_can_move(t_mlx_datas *vars, int x, int y);
 void	move_up_right(t_mlx_datas *vars);
 void	move_up_left(t_mlx_datas *vars);
 void	move_down_right(t_mlx_datas *vars);
@@ -234,6 +273,11 @@ void	madara_atk_animation(t_mlx_datas *vars);
 void	tobi_tp_animation(t_mlx_datas *vars);
 void	put_collectible(t_mlx_datas *vars);
 int		mov_key_hook(int keycode, t_mlx_datas *vars);
+
+/*
+** Misc
+*/
+
 char	*ft_itoa(int n);
 void	free_all_vars(t_mlx_datas *vars);
 int		free_map_buffer(char **map);

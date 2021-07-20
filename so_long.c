@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 01:41:19 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 05:47:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,18 @@ int	render_next_frame(t_mlx_datas *vars)
 	return (0);
 }
 
+static void	clean_all(t_mlx_datas *vars)
+{
+	free_all_vars(vars);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	ft_putstr("Window closed.\n");
+	free(vars->mlx);
+}
 
+/*
+** Use exit(1); ???
+*/
 
 int	main(int ac, char **av)
 {
@@ -80,14 +91,11 @@ int	main(int ac, char **av)
 		return (-1);
 	mlx_key_hook(vars.win, mov_key_hook, &vars);
 	init_map(&vars);
+	init_map_ath(&vars);
 	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, close_win, &vars);
 	mlx_hook(vars.win, 17, 1L << 0, close_win_cross, &vars);
 	mlx_loop(vars.mlx);
-	free_all_vars(&vars);
-	mlx_destroy_window(vars.mlx, vars.win);
-	mlx_destroy_display(vars.mlx);
-	free(vars.mlx);
-	//exit(1);
+	clean_all(&vars);
 	return (0);
 }

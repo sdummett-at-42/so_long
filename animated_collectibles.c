@@ -6,47 +6,52 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 13:19:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 00:18:58 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 05:12:17 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static	void	animate_collect_2(t_mlx_datas *vars, int img, int x, int y)
+{
+	int	width;
+	int	height;
+
+	width = x * vars->width;
+	height = y * vars->height;
+	if (img == 5)
+		put_img(vars, vars->collect_imgs.kunai_5.img, width, height);
+	else if (img == 6)
+		put_img(vars, vars->collect_imgs.kunai_6.img, width, height);
+	else if (img == 7)
+		put_img(vars, vars->collect_imgs.kunai_7.img, width, height);
+	else if (img == 8)
+		put_img(vars, vars->collect_imgs.kunai_8.img, width, height);
+	else if (img == 9)
+		put_img(vars, vars->collect_imgs.kunai_9.img, width, height);
+	else if (img == 10)
+		put_img(vars, vars->collect_imgs.kunai_10.img, width, height);
+}
+
 void	animate_collect(t_mlx_datas *vars, int img, int x, int y)
 {
+	int	width;
+	int	height;
+
+	width = x * vars->width;
+	height = y * vars->height;
 	if (img == 0)
-		put_img(vars, vars->collect_imgs.kunai_0.img, x * \
-		vars->width, y * vars->height);
+		put_img(vars, vars->collect_imgs.kunai_0.img, width, height);
 	else if (img == 1)
-		put_img(vars, vars->collect_imgs.kunai_1.img, x * \
-		vars->width, y * vars->height);
+		put_img(vars, vars->collect_imgs.kunai_1.img, width, height);
 	else if (img == 2)
-		put_img(vars, vars->collect_imgs.kunai_2.img, x * \
-		vars->width, y * vars->height);
+		put_img(vars, vars->collect_imgs.kunai_2.img, width, height);
 	else if (img == 3)
-		put_img(vars, vars->collect_imgs.kunai_3.img, x * \
-		vars->width, y * vars->height);
+		put_img(vars, vars->collect_imgs.kunai_3.img, width, height);
 	else if (img == 4)
-		put_img(vars, vars->collect_imgs.kunai_4.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 5)
-		put_img(vars, vars->collect_imgs.kunai_5.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 6)
-		put_img(vars, vars->collect_imgs.kunai_6.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 7)
-		put_img(vars, vars->collect_imgs.kunai_7.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 8)
-		put_img(vars, vars->collect_imgs.kunai_8.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 9)
-		put_img(vars, vars->collect_imgs.kunai_9.img, x * \
-		vars->width, y * vars->height);
-	else if (img == 10)
-		put_img(vars, vars->collect_imgs.kunai_10.img, x * \
-		vars->width, y * vars->height);
+		put_img(vars, vars->collect_imgs.kunai_4.img, width, height);
+	else
+		animate_collect_2(vars, img, x, y);
 }
 
 void	put_collectible(t_mlx_datas *vars)
