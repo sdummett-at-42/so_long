@@ -6,13 +6,13 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 21:54:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 02:18:12 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 22:23:08 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	init_all_vars_2(t_mlx_datas *vars)
+static void	init_all_vars_3(t_mlx_datas *vars)
 {
 	vars->tearing.up33px.img = NULL;
 	vars->tearing.up50px.img = NULL;
@@ -37,7 +37,7 @@ static void	init_all_vars_2(t_mlx_datas *vars)
 	vars->collect_imgs.kunai_10.img = NULL;
 }
 
-static void	init_all_vars_1(t_mlx_datas *vars)
+static void	init_all_vars_2(t_mlx_datas *vars)
 {
 	vars->p_win.win_2.img = NULL;
 	vars->p_win.win_3.img = NULL;
@@ -63,34 +63,43 @@ static void	init_all_vars_1(t_mlx_datas *vars)
 	vars->tearing.right33px.img = NULL;
 	vars->tearing.right50px.img = NULL;
 	vars->tearing.up16px.img = NULL;
-	init_all_vars_2(vars);
+	init_all_vars_3(vars);
 }
 
-void	init_all_vars(t_mlx_datas *vars)
+static void	init_all_vars_1(t_mlx_datas *vars)
 {
-	vars->p_down.down_0.img = NULL;
-	vars->p_down.down_1.img = NULL;
-	vars->p_down.down_2.img = NULL;
-	vars->p_down.down_3.img = NULL;
-	vars->p_down.down_left_0.img = NULL;
-	vars->p_down.down_left_1.img = NULL;
-	vars->p_down.down_left_2.img = NULL;
-	vars->p_down.down_left_3.img = NULL;
 	vars->p_right.right.img = NULL;
 	vars->p_right.right_0.img = NULL;
 	vars->p_right.right_1.img = NULL;
 	vars->p_right.right_2.img = NULL;
 	vars->p_right.right_3.img = NULL;
-	vars->p_right.right_4.img = NULL;
-	vars->p_right.right_5.img = NULL;
 	vars->p_left.left.img = NULL;
 	vars->p_left.left_0.img = NULL;
 	vars->p_left.left_1.img = NULL;
 	vars->p_left.left_2.img = NULL;
 	vars->p_left.left_3.img = NULL;
-	vars->p_left.left_4.img = NULL;
-	vars->p_left.left_5.img = NULL;
 	vars->p_win.win_0.img = NULL;
 	vars->p_win.win_1.img = NULL;
+	init_all_vars_2(vars);
+}
+
+void	init_all_vars(t_mlx_datas *vars)
+{
+	vars->p_down.down_right_0.img = NULL;
+	vars->p_down.down_right_1.img = NULL;
+	vars->p_down.down_right_2.img = NULL;
+	vars->p_down.down_right_3.img = NULL;
+	vars->p_down.down_left_0.img = NULL;
+	vars->p_down.down_left_1.img = NULL;
+	vars->p_down.down_left_2.img = NULL;
+	vars->p_down.down_left_3.img = NULL;
+	vars->p_up.up_right_0.img = NULL;
+	vars->p_up.up_right_1.img = NULL;
+	vars->p_up.up_right_2.img = NULL;
+	vars->p_up.up_right_3.img = NULL;
+	vars->p_up.up_left_0.img = NULL;
+	vars->p_up.up_left_1.img = NULL;
+	vars->p_up.up_left_2.img = NULL;
+	vars->p_up.up_left_3.img = NULL;
 	init_all_vars_1(vars);
 }

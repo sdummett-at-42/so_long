@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 21:53:12 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 02:18:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 22:24:04 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	free_map_buffer(char **map)
 	return (-1);
 }
 
-static void	free_all_vars_2(t_mlx_datas *vars)
+static void	free_all_vars_3(t_mlx_datas *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->tearing.up16px.img);
 	mlx_destroy_image(vars->mlx, vars->tearing.up33px.img);
@@ -55,7 +55,7 @@ static void	free_all_vars_2(t_mlx_datas *vars)
 	mlx_destroy_image(vars->mlx, vars->collect_imgs.kunai_10.img);
 }
 
-static void	free_all_vars_1(t_mlx_datas *vars)
+static void	free_all_vars_2(t_mlx_datas *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->p_win.win_1.img);
 	mlx_destroy_image(vars->mlx, vars->p_win.win_2.img);
@@ -81,34 +81,43 @@ static void	free_all_vars_1(t_mlx_datas *vars)
 	mlx_destroy_image(vars->mlx, vars->tearing.right16px.img);
 	mlx_destroy_image(vars->mlx, vars->tearing.right33px.img);
 	mlx_destroy_image(vars->mlx, vars->tearing.right50px.img);
+	free_all_vars_3(vars);
+}
+
+static void	free_all_vars_1(t_mlx_datas *vars)
+{
+	mlx_destroy_image(vars->mlx, vars->p_up.up_left_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_left_1.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_left_2.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_left_3.img);
+	mlx_destroy_image(vars->mlx, vars->p_right.right.img);
+	mlx_destroy_image(vars->mlx, vars->p_right.right_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_right.right_1.img);
+	mlx_destroy_image(vars->mlx, vars->p_right.right_2.img);
+	mlx_destroy_image(vars->mlx, vars->p_right.right_3.img);
+	mlx_destroy_image(vars->mlx, vars->p_left.left.img);
+	mlx_destroy_image(vars->mlx, vars->p_left.left_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_left.left_1.img);
+	mlx_destroy_image(vars->mlx, vars->p_left.left_2.img);
+	mlx_destroy_image(vars->mlx, vars->p_left.left_3.img);
+	mlx_destroy_image(vars->mlx, vars->p_win.win_0.img);
 	free_all_vars_2(vars);
 }
 
 void	free_all_vars(t_mlx_datas *vars)
 {
 	free_map_buffer(vars->map);
-	mlx_destroy_image(vars->mlx, vars->p_down.down_0.img);
-	mlx_destroy_image(vars->mlx, vars->p_down.down_1.img);
-	mlx_destroy_image(vars->mlx, vars->p_down.down_2.img);
-	mlx_destroy_image(vars->mlx, vars->p_down.down_3.img);
+	mlx_destroy_image(vars->mlx, vars->p_down.down_right_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_down.down_right_1.img);
+	mlx_destroy_image(vars->mlx, vars->p_down.down_right_2.img);
+	mlx_destroy_image(vars->mlx, vars->p_down.down_right_3.img);
 	mlx_destroy_image(vars->mlx, vars->p_down.down_left_0.img);
 	mlx_destroy_image(vars->mlx, vars->p_down.down_left_1.img);
 	mlx_destroy_image(vars->mlx, vars->p_down.down_left_2.img);
 	mlx_destroy_image(vars->mlx, vars->p_down.down_left_3.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_0.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_1.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_2.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_3.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_4.img);
-	mlx_destroy_image(vars->mlx, vars->p_right.right_5.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_0.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_1.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_2.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_3.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_4.img);
-	mlx_destroy_image(vars->mlx, vars->p_left.left_5.img);
-	mlx_destroy_image(vars->mlx, vars->p_win.win_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_right_0.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_right_1.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_right_2.img);
+	mlx_destroy_image(vars->mlx, vars->p_up.up_right_3.img);
 	free_all_vars_1(vars);
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/20 04:15:50 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 05:04:24 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 21:53:04 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	render_first_frame(t_mlx_datas *vars, int width, int height)
 {
-	put_img(vars, vars->p_down.down_0.img, width, height + 50);
+	put_img(vars, vars->p_up.up_right_0.img, width, height + 50);
 	put_img(vars, vars->tearing.down16px.img, width, height + 66 + 50);
 }
 
 static void	render_second_frame(t_mlx_datas *vars, int width, int height)
 {
-	put_img(vars, vars->p_down.down_1.img, width, height + 33);
+	put_img(vars, vars->p_up.up_right_1.img, width, height + 33);
 	put_img(vars, vars->tearing.down33px.img, width, height + 66 + 33);
 }
 
 static void	render_third_frame(t_mlx_datas *vars, int width, int height)
 {
-	put_img(vars, vars->p_down.down_1.img, width, height + 16);
+	put_img(vars, vars->p_up.up_right_2.img, width, height + 16);
 	put_img(vars, vars->tearing.down50px.img, width, height + 66 + 16);
 }
 
 static void	render_last_frame(t_mlx_datas *vars, int width, int height)
 {
-	put_img(vars, vars->p_down.down_3.img, width, height);
+	put_img(vars, vars->p_up.up_right_3.img, width, height);
 	put_img(vars, vars->p_right.right.img, width, height);
 	vars->play_pos.up = 0;
 	put_free_space(vars);

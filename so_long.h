@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 05:47:56 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 22:18:25 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,31 @@ typedef struct s_collect_imgs
 	t_img_datas	kunai_10;
 }	t_collect_imgs;
 
-typedef struct s_p_up_down
+typedef struct s_p_down
 {
 	t_img_datas	down;
-	t_img_datas	down_0;
-	t_img_datas	down_1;
-	t_img_datas	down_2;
-	t_img_datas	down_3;
+	t_img_datas	down_right_0;
+	t_img_datas	down_right_1;
+	t_img_datas	down_right_2;
+	t_img_datas	down_right_3;
 	t_img_datas	down_left_0;
 	t_img_datas	down_left_1;
 	t_img_datas	down_left_2;
 	t_img_datas	down_left_3;
 }	t_p_down;
+
+typedef struct s_p_up
+{
+	t_img_datas	up;
+	t_img_datas	up_right_0;
+	t_img_datas	up_right_1;
+	t_img_datas	up_right_2;
+	t_img_datas	up_right_3;
+	t_img_datas	up_left_0;
+	t_img_datas	up_left_1;
+	t_img_datas	up_left_2;
+	t_img_datas	up_left_3;
+}	t_p_up;
 
 typedef struct s_p_right
 {
@@ -74,8 +87,6 @@ typedef struct s_p_right
 	t_img_datas	right_1;
 	t_img_datas	right_2;
 	t_img_datas	right_3;
-	t_img_datas	right_4;
-	t_img_datas	right_5;
 }	t_p_right;
 
 typedef struct s_p_left
@@ -85,8 +96,6 @@ typedef struct s_p_left
 	t_img_datas	left_1;
 	t_img_datas	left_2;
 	t_img_datas	left_3;
-	t_img_datas	left_4;
-	t_img_datas	left_5;
 }	t_p_left;
 
 typedef struct s_p_win
@@ -186,6 +195,7 @@ typedef struct s_mlx_datas
 	t_img_datas		wall;
 	t_map_datas		map_datas;
 	t_collect_imgs	collect_imgs;
+	t_p_up			p_up;
 	t_p_down		p_down;
 	t_p_right		p_right;
 	t_p_left		p_left;
@@ -242,8 +252,10 @@ void	init_all_vars(t_mlx_datas *vars);
 int		init_collectible_imgs(t_mlx_datas *vars);
 int		init_ground_imgs(t_mlx_datas *vars);
 int		init_wall_imgs(t_mlx_datas *vars);
-int		init_p_up_down_right_imgs(t_mlx_datas*vars);
-int		init_p_up_down_left_imgs(t_mlx_datas*vars);
+int		init_p_up_right_imgs(t_mlx_datas*vars);
+int		init_p_up_left_imgs(t_mlx_datas*vars);
+int		init_p_down_left_imgs(t_mlx_datas *vars);
+int		init_p_down_right_imgs(t_mlx_datas *vars);
 int		init_p_right_imgs(t_mlx_datas *vars);
 int		init_p_left_imgs(t_mlx_datas *vars);
 int		init_p_win_imgs(t_mlx_datas *vars);

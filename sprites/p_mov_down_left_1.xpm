@@ -1,5 +1,5 @@
 /* XPM */
-static char * p_move_up_left_1_xpm[] = {
+static char * p_mov_down_left_1_xpm[] = {
 "66 66 347 2",
 "  	c #AA834B",
 ". 	c #A88148",

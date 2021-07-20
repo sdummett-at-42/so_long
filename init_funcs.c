@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 09:44:51 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 02:29:51 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/20 22:12:24 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ static int	init_img_datas(t_mlx_datas *vars)
 		return (-1);
 	if (init_collectible_imgs(vars) == -1)
 		return (-1);
-	if (init_p_up_down_right_imgs(vars) == -1)
+	if (init_p_up_right_imgs(vars) == -1)
 		return (-1);
-	if (init_p_up_down_left_imgs(vars) == -1)
+	if (init_p_up_left_imgs(vars) == -1)
+		return (-1);
+	if (init_p_down_right_imgs(vars) == -1)
+		return (-1);
+	if (init_p_down_left_imgs(vars) == -1)
 		return (-1);
 	return (init_img_datas_2(vars));
 }
