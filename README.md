@@ -5,6 +5,7 @@
 ## Install
 
 ```sh
+git clone --recurse-submodules git@github.com:sdummett/so_long.git
 make so_long
 ```
 
@@ -17,6 +18,7 @@ Run ./so_long map.ber (the map must be well parsed)
 ## Run tests
 
 ```sh
+git clone --recurse-submodules git@github.com:sdummett/so_long.git
 ./so_long *.ber
 ```
 
