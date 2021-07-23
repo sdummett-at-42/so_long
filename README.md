@@ -2,8 +2,6 @@
 
 > This project is a very small 2D game. I worked with textures, sprites, and some very basic gameplay elements.
 
-### 🏠 [Homepage](meplay elements.)
-
 ## Install
 
 ```sh
