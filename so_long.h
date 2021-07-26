@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 11:54:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 23:13:06 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/26 21:02:37 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,10 +246,8 @@ void	put_img(t_mlx_datas *vars, void*img, int x, int y);
 void	init_put_madara(t_mlx_datas *vars, int x, int y);
 void	init_put_wall(t_mlx_datas *vars, int x, int y);
 void	init_put_free_space(t_mlx_datas *vars, int x, int y);
-void	init_put_player(t_mlx_datas *vars, int x, int y);
 void	init_put_collectible(t_mlx_datas *vars, int x, int y);
 void	init_put_exit(t_mlx_datas *vars, int x, int y);
-
 void	init_all_vars(t_mlx_datas *vars);
 int		init_collectible_imgs(t_mlx_datas *vars);
 int		init_ground_imgs(t_mlx_datas *vars);
@@ -275,6 +273,8 @@ int		init_anti_screentearing(t_mlx_datas *vars);
 void	put_ath(t_mlx_datas *vars);
 void	put_free_space(t_mlx_datas *vars);
 int		player_can_move(t_mlx_datas *vars, int x, int y);
+void	put_player(t_mlx_datas *vars, int x, int y);
+void	put_sprites(t_mlx_datas *vars, char c, int x, int y);
 void	move_up_right(t_mlx_datas *vars);
 void	move_up_left(t_mlx_datas *vars);
 void	move_down_right(t_mlx_datas *vars);

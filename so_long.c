@@ -6,7 +6,7 @@
 /*   By: sdummett <sdummett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:49:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/07/20 23:22:20 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/07/26 21:03:10 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@ void	put_animated_movements(t_mlx_datas *vars)
 		move_right(vars);
 }
 
-static void	put_sprites(t_mlx_datas *vars, char c, int x, int y)
-{
-	if (c == '1')
-		init_put_wall(vars, x, y);
-	else if (c == '0')
-		init_put_free_space(vars, x, y);
-	else if (c == 'E')
-		init_put_exit(vars, x, y);
-	else if (c == 'M')
-		init_put_madara(vars, x, y);
-}
-
 void	refresh_map(t_mlx_datas *vars)
 {
 	int	i;
@@ -64,10 +52,10 @@ void	refresh_map(t_mlx_datas *vars)
 		{
 			put_sprites(vars, vars->map[i][j], x, y);
 			if (vars->map[i][j] == 'P')
-				init_put_player(vars, x, y);
+				put_player(vars, x, y);
 			if (vars->play_pos.is_moving == 0 && vars->play_pos.won == 0 \
-				&& vars->play_pos.lost == 0)
-			x = x + vars->height;
+					&& vars->play_pos.lost == 0)
+				x = x + vars->height;
 			j++;
 		}
 		y = y + vars->width;
