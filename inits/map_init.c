@@ -25,6 +25,7 @@ static void	init_player_pos(t_mlx_datas *vars, int i, int j)
 	vars->play_pos.won = 0;
 	vars->play_pos.lost = 0;
 	vars->play_pos.is_moving = 0;
+	vars->play_pos.look_right = 1;
 }
 
 void	init_map_ath(t_mlx_datas *vars)
@@ -52,20 +53,6 @@ void	init_map_ath(t_mlx_datas *vars)
 	}
 }
 
-static void	put_sprites(t_mlx_datas *vars, char c, int x, int y)
-{
-	if (c == '1')
-		init_put_wall(vars, x, y);
-	else if (c == '0')
-		init_put_free_space(vars, x, y);
-	else if (c == 'C')
-		init_put_collectible(vars, x, y);
-	else if (c == 'E')
-		init_put_exit(vars, x, y);
-	else if (c == 'M')
-		init_put_madara(vars, x, y);
-}
-
 void	init_map(t_mlx_datas *vars)
 {
 	int	i;
@@ -81,11 +68,10 @@ void	init_map(t_mlx_datas *vars)
 		j = 0;
 		while (vars->map[i][j] != '\0')
 		{
-			put_sprites(vars, vars->map[i][j], x, y);
 			if (vars->map[i][j] == 'P')
 			{
 				init_player_pos(vars, i, j);
-				init_put_player(vars, x, y);
+				return ;
 			}
 			x = x + vars->height;
 			j++;

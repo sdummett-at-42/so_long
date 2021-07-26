@@ -249,6 +249,7 @@ void	init_put_free_space(t_mlx_datas *vars, int x, int y);
 void	init_put_player(t_mlx_datas *vars, int x, int y);
 void	init_put_collectible(t_mlx_datas *vars, int x, int y);
 void	init_put_exit(t_mlx_datas *vars, int x, int y);
+
 void	init_all_vars(t_mlx_datas *vars);
 int		init_collectible_imgs(t_mlx_datas *vars);
 int		init_ground_imgs(t_mlx_datas *vars);

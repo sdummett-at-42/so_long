@@ -24,7 +24,10 @@ void	init_put_collectible(t_mlx_datas *vars, int x, int y)
 
 void	init_put_player(t_mlx_datas *vars, int x, int y)
 {
-	put_img(vars, vars->p_right.right.img, x, y);
+	if (vars->play_pos.look_right == 1)
+		put_img(vars, vars->p_right.right.img, x, y);
+	else
+		put_img(vars, vars->p_left.left.img, x, y);
 }
 
 void	init_put_free_space(t_mlx_datas *vars, int x, int y)

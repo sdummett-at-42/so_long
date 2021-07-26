@@ -34,12 +34,53 @@ void	put_animated_movements(t_mlx_datas *vars)
 		move_right(vars);
 }
 
+static void	put_sprites(t_mlx_datas *vars, char c, int x, int y)
+{
+	if (c == '1')
+		init_put_wall(vars, x, y);
+	else if (c == '0')
+		init_put_free_space(vars, x, y);
+	else if (c == 'E')
+		init_put_exit(vars, x, y);
+	else if (c == 'M')
+		init_put_madara(vars, x, y);
+}
+
+void	refresh_map(t_mlx_datas *vars)
+{
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+
+	y = 0;
+	i = 0;
+
+	while (vars->map[i] != NULL)
+	{
+		x = 0;
+		j = 0;
+		while (vars->map[i][j] != '\0')
+		{
+			put_sprites(vars, vars->map[i][j], x, y);
+			if (vars->map[i][j] == 'P')
+				init_put_player(vars, x, y);
+			if (vars->play_pos.is_moving == 0 && vars->play_pos.won == 0 \
+				&& vars->play_pos.lost == 0)
+			x = x + vars->height;
+			j++;
+		}
+		y = y + vars->width;
+		i++;
+	}
+}
+
 int	render_next_frame(t_mlx_datas *vars)
 {
 	static int	i = 0;
 
 	i++;
-	if (i == 1500)
+	if (i == 900)
 	{
 		if (vars->play_pos.won == 2)
 			win_animation(vars);
@@ -51,8 +92,11 @@ int	render_next_frame(t_mlx_datas *vars)
 			lost_animation(vars);
 		else
 			put_animated_movements(vars);
+		if (vars->play_pos.is_moving == 0 && vars->play_pos.won == 0 \
+			&& vars->play_pos.lost == 0)
+			refresh_map(vars);
 	}
-	if (i == 7500)
+	if (i == 1200)
 	{
 		put_collectible(vars);
 		i = 0;
