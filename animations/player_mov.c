@@ -58,6 +58,7 @@ void	put_ath(t_mlx_datas *vars)
 			if (i == 2)
 			{
 				str = ft_itoa(vars->moves.count);
+				put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
 				mlx_string_put(vars->mlx, vars->win, vars->width, \
 					vars->moves.y + 37, 0xff8000, str);
 				free(str);
