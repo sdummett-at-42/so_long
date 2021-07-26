@@ -55,7 +55,7 @@ void	refresh_map(t_mlx_datas *vars)
 
 	y = 0;
 	i = 0;
-
+	put_ath(vars);
 	while (vars->map[i] != NULL)
 	{
 		x = 0;

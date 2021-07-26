@@ -14,14 +14,39 @@
 
 void	put_ath(t_mlx_datas *vars)
 {
-	char	*str;
+	int			i;
+	char		*str;
+	static int	last_move_value = 0;
 
-	str = ft_itoa(vars->moves.count);
-	put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
-	mlx_string_put(vars->mlx, vars->win, vars->width, \
-		vars->moves.y + 37, 0xff8000, str);
-	printf("Moves -> %d.\n", vars->moves.count);
-	free(str);
+	i = 1;
+	while (i * vars->width < vars->win_size_x)
+	{
+		if (i == 1)
+			put_img(vars, vars->ath.ath_0.img, 0, vars->moves.y);
+		else
+		{
+			put_img(vars, vars->ath.ath_1.img, i * vars->width, vars->moves.y);
+			if (i == 2)
+			{
+				str = ft_itoa(vars->moves.count);
+				mlx_string_put(vars->mlx, vars->win, vars->width, \
+					vars->moves.y + 37, 0xff8000, str);
+				if (last_move_value != vars->moves.count)
+				{
+					printf("Moves -> %d.\n", vars->moves.count);
+					last_move_value = vars->moves.count;
+				}
+				free(str);
+			}
+		}
+		i++;
+	}
+	// str = ft_itoa(vars->moves.count);
+	// put_img(vars, vars->ath.ath_2.img, vars->width, vars->moves.y);
+	// mlx_string_put(vars->mlx, vars->win, vars->width, \
+	// 	vars->moves.y + 37, 0xff8000, str);
+	
+	// free(str);
 }
 
 void	put_free_space(t_mlx_datas *vars)

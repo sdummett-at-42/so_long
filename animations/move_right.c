@@ -49,10 +49,7 @@ void	move_right(t_mlx_datas *vars)
 	width = vars->play_pos.x * vars->width;
 	height = vars->play_pos.y * vars->height;
 	if (i == 0 )
-	{
-		printf("I moved.\n");
 		render_first_frame(vars, width, height);
-	}
 	else if (i == 1)
 		render_second_frame(vars, width, height);
 	else if (i == 2)
