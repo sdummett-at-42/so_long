@@ -27,26 +27,6 @@ static int	player_lost(t_mlx_datas *vars, int x, int y)
 	vars->play_pos.last_y = y;
 	return (0);
 }
-////// DEBUGG
-void print_map(t_mlx_datas *vars)
-{
-	int y;
-	int x;
-
-	y = 0;
-	while (vars->map[y] != NULL)
-	{
-		x = 0;
-		while (vars->map[y][x] != '\0')
-		{
-			write(1, &(vars->map[y][x]), 1);
-			x++;
-		}
-		write(1, "\n", 1);
-		y++;
-	}
-}
-/////////////
 
 int	player_can_move(t_mlx_datas *vars, int x, int y)
 {
@@ -58,7 +38,7 @@ int	player_can_move(t_mlx_datas *vars, int x, int y)
 			vars->map_datas.collectible--;
 			vars->map[y][x] = 'P';
 			vars->map[vars->play_pos.y][vars->play_pos.x] = '0';
-			//print_map(vars);
+			vars->play_pos.is_moving = 1;
 		}
 		else if (vars->map[y][x] == 'M')
 			return (player_won(vars, x, y));
