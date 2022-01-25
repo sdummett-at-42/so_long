@@ -1,4 +1,4 @@
-# Welcome to so_long 👋
+# Welcome to so_long
 
 > This project is a very small 2D game. I worked with textures, sprites, and some very basic gameplay elements.
 
@@ -27,11 +27,3 @@ git clone --recurse-submodules git@github.com:sdummett/so_long.git
 👤 **Stone**
 
 * Github: [@sdummett](https://github.com/sdummett)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
