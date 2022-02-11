@@ -2,25 +2,20 @@
 
 > This project is a very small 2D game. I worked with textures, sprites, and some very basic gameplay elements.
 
-## Install
+## Installation
 
 ```sh
-git clone --recurse-submodules git@github.com:sdummett/so_long.git
-make so_long
+git clone git@github.com:sdummett/so_long.git && cd so_long && make so_long
 ```
 
 ## Usage
-
 ```sh
-Run ./so_long map.ber (the map must be well parsed)
-```
-
-## Run tests
-
-```sh
-git clone --recurse-submodules git@github.com:sdummett/so_long.git
 ./so_long *.ber
 ```
+All the maps are in the maps directory.
+You can use your own map with a .ber extension
+
+Have fun ! 🎮
 
 ## Author
 
